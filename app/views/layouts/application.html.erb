@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GTHub</title>
+  <title>GTHub | <%= @title %></title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-
-<%= yield %>
-
+<div id="header">
+	<ul id="header-nav">
+		<li>Home</li>
+		<li>Tune Database</li>
+		<li>Account</li>
+	</ul>
+	<div id="logo">
+		<%= image_tag("logo.png") %>
+	</div>
+</div>
+<div id="content-wrapper">
+	<div id='content-header'>
+		<%= image_tag("content-header.png") %>
+		<h1 id="content-header-text"><%= @title %></h1>
+	</div>
+	<div id="content-sub-wrapper">
+		<div id="content">
+			<!-- Flash Messages -->
+			<% flash.each do |name, msg| %>
+			      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+			<% end %>
+			<!-- Yield For Actual Content -->
+			<%= yield %>
+		</div>
+	</div>
+</div>
 </body>
 </html>
