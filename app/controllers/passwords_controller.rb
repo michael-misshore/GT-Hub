@@ -9,4 +9,15 @@ class PasswordsController < Devise::PasswordsController
     @title = 'Change Password'
     super
   end
+  
+  def update
+    @title = 'Change Password'
+    super
+  end
+  
+  def create
+    @title = 'Change Password'
+    super
+  end
+  
 end

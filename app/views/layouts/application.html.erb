@@ -9,9 +9,9 @@
 <body>
 <div id="header">
 	<ul id="header-nav">
-		<li>Home</li>
-		<li>Tune Database</li>
-		<li>Account</li>
+		<li><a href="/">Home</a></li>
+		<li><a href="/tunes">Tune Database</a></li>
+		<li><a href="/users">Account</a></li>
 	</ul>
 	<div id="logo">
 		<%= image_tag("logo.png") %>
@@ -26,7 +26,7 @@
 		<div id="content">
 			<!-- Flash Messages -->
 			<% flash.each do |name, msg| %>
-			      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+			      <%= content_tag :h2, msg, :id => "flash_#{name}" %>
 			<% end %>
 			<!-- Yield For Actual Content -->
 			<%= yield %>
