@@ -1,0 +1,29 @@
+<%= form_for(@tune) do |f| %>
+  <% if @tune.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tune.errors.count, "error") %> prohibited this tune from being saved:</h2>
+
+      <ul>
+      <% @tune.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :car_id %><br />
+    <%= f.text_field :car_id %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :track_id %><br />
+    <%= f.text_field :track_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

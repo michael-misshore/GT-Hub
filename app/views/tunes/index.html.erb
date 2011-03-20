@@ -1,0 +1,27 @@
+<h1>Listing tunes</h1>
+
+<table>
+  <tr>
+    <th>Car</th>
+    <th>User</th>
+    <th>Track</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tunes.each do |tune| %>
+  <tr>
+    <td><%= tune.car_id %></td>
+    <td><%= tune.user_id %></td>
+    <td><%= tune.track_id %></td>
+    <td><%= link_to 'Show', tune %></td>
+    <td><%= link_to 'Edit', edit_tune_path(tune) %></td>
+    <td><%= link_to 'Destroy', tune, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tune', new_tune_path %>

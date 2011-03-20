@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Car:</b>
+  <%= @tune.car_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @tune.user_id %>
+</p>
+
+<p>
+  <b>Track:</b>
+  <%= @tune.track_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_tune_path(@tune) %> |
+<%= link_to 'Back', tunes_path %>
