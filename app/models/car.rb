@@ -5,7 +5,7 @@ class Car < ActiveRecord::Base
     Car.delete_all
     
     @make = ''
-    IO.foreach("script/car-list.txt") {|block|
+    IO.foreach("import_data/cars.txt") {|block|
       # Get the make of the car
       make = block.match("==(.*)")
       if !make.nil?
