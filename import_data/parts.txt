@@ -1,0 +1,64 @@
+==Body/Chassis==
+Weight Reduction Stage 1
+Weight Reduction Stage 2
+Weight Reduction Stage 3
+Chassis Reinforcement
+Window Weight Reduction
+Carbon Hood
+
+==Engine==
+Engine Tuning Stage 1
+Engine Tuning Stage 2
+Engine Tuning Stage 3
+ECU Tuning
+
+==Intake System==
+Sports Intake Manifold
+Racing Filter
+Sports Air Filter
+
+==Exhaust==
+Sports Exhaust
+Titanium Semi-Racing Exhaust
+Titanium Racing Exhaust
+Sports Exhaust Manifold
+Catalytic Converter: Sports
+
+==Turbo Kits==
+Low RPM Range Turbo Kit
+Mid RPM Range Turbo Kit
+High RPM Range Turbo Kit
+Supercharger
+
+==Transmission==
+5 speed Close-Ratio Transmission
+6 speed Close-Ratio Transmission
+Fully Customizable Transmission
+
+==Drivetrain==
+Single Plate
+Twin Plate
+Semi-Racing
+Sports
+Carbon Drive Shaft
+Torque Sensing Center Differential
+Adjustable LSD
+
+==Suspension==
+Fixed Sports Kit
+Height-Adjustable Sports Kit
+Fully Customizable Kit
+
+==Tires==
+Comfort Hard
+Comfort Medium
+Comfort Soft
+Sport Hard
+Sport Medium
+Sport Soft
+Racing Hard
+Racing Medium
+Racing Soft
+
+==Aero==
+Aero
