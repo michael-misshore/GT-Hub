@@ -1,17 +1,16 @@
 class TunesController < ApplicationController
-  # GET /tunes
-  # GET /tunes.xml
+  
+  before_filter :authenticate_user!
+
   def index
     @tunes = Tune.all
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @tunes }
     end
   end
 
-  # GET /tunes/1
-  # GET /tunes/1.xml
   def show
     @tune = Tune.find(params[:id])
 
@@ -21,10 +20,9 @@ class TunesController < ApplicationController
     end
   end
 
-  # GET /tunes/new
-  # GET /tunes/new.xml
   def new
     @tune = Tune.new
+    @title = 'Tunes'
 
     respond_to do |format|
       format.html # new.html.erb
@@ -32,7 +30,6 @@ class TunesController < ApplicationController
     end
   end
 
-  # GET /tunes/1/edit
   def edit
     @tune = Tune.find(params[:id])
   end

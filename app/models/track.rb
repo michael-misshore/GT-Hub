@@ -1,4 +1,5 @@
-class Track < ActiveRecord::Base
+class Track < ActiveRecord::Base  
+  scope :ordered, order("name ASC")
   
   def self.import
     Track.delete_all

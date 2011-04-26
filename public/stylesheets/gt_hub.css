@@ -75,6 +75,10 @@ h2 {
 	font-size: 28px;
 }
 
+h2, h3, h4 {
+	line-height: 1px;
+}
+
 a {
 	text-decoration: none;
 	color: #692a2f;
@@ -82,4 +86,8 @@ a {
 
 a:hover {
 	color: #e02425;
+}
+
+.parts-table td {
+	vertical-align: top;
 }

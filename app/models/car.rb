@@ -1,4 +1,14 @@
 class Car < ActiveRecord::Base
+  scope :ordered, order("make ASC, model ASC, year ASC")
+  
+  def display_name
+    if premium && standard
+      type = 'P|S'
+    elsif
+      type = premium ? 'P' : 'S'
+    end
+    "#{year} #{make} #{model} (#{type})"
+  end
   
   def self.import
     # We need to flush the table first

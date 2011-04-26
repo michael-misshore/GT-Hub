@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110325021103) do
+ActiveRecord::Schema.define(:version => 20110424213543) do
 
   create_table "cars", :force => true do |t|
     t.datetime "created_at"
@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(:version => 20110325021103) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "group",       :null => false
+    t.string   "html_class",  :null => false
+    t.string   "html_ref_id", :null => false
+  end
+
+  create_table "parts_tunes", :id => false, :force => true do |t|
+    t.integer "part_id"
+    t.integer "tune_id"
   end
 
   create_table "tracks", :force => true do |t|
@@ -39,47 +47,49 @@ ActiveRecord::Schema.define(:version => 20110325021103) do
     t.integer  "car_id"
     t.integer  "user_id"
     t.integer  "track_id"
+    t.integer  "karma",                                   :default => 0,      :null => false
+    t.string   "tune_type",                  :limit => 0, :default => "grip", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "downforce_f",                :null => false
-    t.integer  "downforce_r",                :null => false
-    t.integer  "ballast_amount",             :null => false
-    t.integer  "ballast_position",           :null => false
-    t.integer  "power_limit",                :null => false
-    t.float    "gear_1",                     :null => false
-    t.float    "gear_2",                     :null => false
-    t.float    "gear_3",                     :null => false
-    t.float    "gear_4",                     :null => false
-    t.float    "gear_5",                     :null => false
-    t.float    "gear_6",                     :null => false
-    t.float    "gear_7",                     :null => false
-    t.float    "gear_final",                 :null => false
-    t.integer  "top_speed",                  :null => false
-    t.integer  "initial_torque_f",           :null => false
-    t.integer  "initial_torque_r",           :null => false
-    t.integer  "acceleration_sensitivity_f", :null => false
-    t.integer  "acceleration_sensitivity_r", :null => false
-    t.integer  "braking_sensitivity_f",      :null => false
-    t.integer  "braking_sensitivity_r",      :null => false
-    t.integer  "ride_height_f",              :null => false
-    t.integer  "ride_height_r",              :null => false
-    t.float    "spring_rate_f",              :null => false
-    t.float    "spring_rate_r",              :null => false
-    t.integer  "dampners_ext_f",             :null => false
-    t.integer  "dampners_ext_r",             :null => false
-    t.integer  "dampners_comp_f",            :null => false
-    t.integer  "dampners_comp_r",            :null => false
-    t.integer  "anti_roll_bar_f",            :null => false
-    t.integer  "anti_roll_bar_r",            :null => false
-    t.float    "camber_f",                   :null => false
-    t.float    "camber_r",                   :null => false
-    t.float    "toe_f",                      :null => false
-    t.float    "toe_r",                      :null => false
-    t.integer  "brake_balance_f",            :null => false
-    t.integer  "brake_balance_r",            :null => false
-    t.integer  "tires_f",                    :null => false
-    t.integer  "tires_r",                    :null => false
-    t.integer  "abs",                        :null => false
+    t.integer  "downforce_f"
+    t.integer  "downforce_r"
+    t.integer  "ballast_amount"
+    t.integer  "ballast_position"
+    t.integer  "power_limit"
+    t.float    "gear_1"
+    t.float    "gear_2"
+    t.float    "gear_3"
+    t.float    "gear_4"
+    t.float    "gear_5"
+    t.float    "gear_6"
+    t.float    "gear_7"
+    t.float    "gear_final"
+    t.integer  "top_speed"
+    t.integer  "initial_torque_f"
+    t.integer  "initial_torque_r"
+    t.integer  "acceleration_sensitivity_f"
+    t.integer  "acceleration_sensitivity_r"
+    t.integer  "braking_sensitivity_f"
+    t.integer  "braking_sensitivity_r"
+    t.integer  "ride_height_f"
+    t.integer  "ride_height_r"
+    t.float    "spring_rate_f"
+    t.float    "spring_rate_r"
+    t.integer  "dampners_ext_f"
+    t.integer  "dampners_ext_r"
+    t.integer  "dampners_comp_f"
+    t.integer  "dampners_comp_r"
+    t.integer  "anti_roll_bar_f"
+    t.integer  "anti_roll_bar_r"
+    t.float    "camber_f"
+    t.float    "camber_r"
+    t.float    "toe_f"
+    t.float    "toe_r"
+    t.integer  "brake_balance_f"
+    t.integer  "brake_balance_r"
+    t.integer  "tires_f"
+    t.integer  "tires_r"
+    t.integer  "abs"
   end
 
   create_table "users", :force => true do |t|

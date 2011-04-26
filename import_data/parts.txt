@@ -1,64 +1,65 @@
 ==Body/Chassis==
-Weight Reduction Stage 1
-Weight Reduction Stage 2
-Weight Reduction Stage 3
-Chassis Reinforcement
-Window Weight Reduction
-Carbon Hood
+Weight Reduction Stage 1,,
+Weight Reduction Stage 2,,
+Weight Reduction Stage 3,,
+Chassis Reinforcement,,
+Window Weight Reduction,,
+Carbon Hood,,
 
 ==Engine==
-Engine Tuning Stage 1
-Engine Tuning Stage 2
-Engine Tuning Stage 3
-ECU Tuning
+Engine Tuning Stage 1,,engine_table
+Engine Tuning Stage 2,,
+Engine Tuning Stage 3,,
+ECU Tuning,,
 
 ==Intake System==
-Sports Intake Manifold
-Racing Filter
-Sports Air Filter
+Sports Intake Manifold,,
+Racing Filter,intake,
+Sports Air Filter,intake,
 
 ==Exhaust==
-Sports Exhaust
-Titanium Semi-Racing Exhaust
-Titanium Racing Exhaust
-Sports Exhaust Manifold
-Catalytic Converter: Sports
+Sports Exhaust,exhaust,
+Titanium Semi-Racing Exhaust,exhaust,
+Titanium Racing Exhaust,exhaust,
+Sports Exhaust Manifold,,
+Catalytic Converter: Sports,,
 
 ==Turbo Kits==
-Low RPM Range Turbo Kit
-Mid RPM Range Turbo Kit
-High RPM Range Turbo Kit
-Supercharger
+Low RPM Range Turbo Kit,force_induction,
+Mid RPM Range Turbo Kit,force_induction,
+High RPM Range Turbo Kit,force_induction,
+Supercharger,force_induction,
 
 ==Transmission==
-5 speed Close-Ratio Transmission
-6 speed Close-Ratio Transmission
-Fully Customizable Transmission
+5 speed Close-Ratio Transmission,tranny,
+6 speed Close-Ratio Transmission,tranny,
+Fully Customizable Transmission,tranny,transmission_table
 
 ==Drivetrain==
-Single Plate
-Twin Plate
-Semi-Racing
-Sports
-Carbon Drive Shaft
-Torque Sensing Center Differential
-Adjustable LSD
+Single Plate Clutch,clutch,
+Twin Plate Clutch,clutch,
+Semi-Racing Flywheel,flywheel,
+Sports Flywheel,flywheel,
+Carbon Drive Shaft,,
+Torque Sensing Center Differential,,
+Adjustable LSD,,lsd_table
 
 ==Suspension==
-Fixed Sports Kit
-Height-Adjustable Sports Kit
-Fully Customizable Kit
+Fixed Sports Kit,suspension,
+Height-Adjustable Sports Kit,suspension,
+Fully Customizable Kit,suspension,suspension_table
 
 ==Tires==
-Comfort Hard
-Comfort Medium
-Comfort Soft
-Sport Hard
-Sport Medium
-Sport Soft
-Racing Hard
-Racing Medium
-Racing Soft
+Comfort Hard,tires,
+Comfort Medium,tires,
+Comfort Soft,tires,
+Sport Hard,tires,
+Sport Medium,tires,
+Sport Soft,tires,
+Racing Hard,tires,
+Racing Medium,tires,
+Racing Soft,tires,
 
 ==Aero==
-Aero
+Front Aero,,body_chassis_table
+Spoiler,,body_chassis_table
