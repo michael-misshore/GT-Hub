@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(:version => 20110424213543) do
     t.integer  "car_id"
     t.integer  "user_id"
     t.integer  "track_id"
-    t.integer  "karma",                                   :default => 0,      :null => false
-    t.string   "tune_type",                  :limit => 0, :default => "grip", :null => false
+    t.integer  "karma",                      :default => 0,      :null => false
+    t.string   "tune_type",                  :default => "grip", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "downforce_f"

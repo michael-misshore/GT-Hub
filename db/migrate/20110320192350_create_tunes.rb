@@ -5,7 +5,7 @@ class CreateTunes < ActiveRecord::Migration
       t.integer :user_id
       t.integer :track_id
       t.integer :karma, :null => false, :default => 0
-      t.column :tune_type, "ENUM('drift', 'drag', 'grip')", :null => false, :default => 'grip'
+      t.string :tune_type, :null => false, :default => 'grip'
 
       t.timestamps
     end
