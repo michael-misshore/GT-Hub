@@ -49,7 +49,18 @@ Fixed Sports Kit,suspension,
 Height-Adjustable Sports Kit,suspension,
 Fully Customizable Kit,suspension,suspension_table
 
-==Tires==
+==Tires - Front==
+Comfort Hard,tires,
+Comfort Medium,tires,
+Comfort Soft,tires,
+Sport Hard,tires,
+Sport Medium,tires,
+Sport Soft,tires,
+Racing Hard,tires,
+Racing Medium,tires,
+Racing Soft,tires,
+
+==Tires - Rear==
 Comfort Hard,tires,
 Comfort Medium,tires,
 Comfort Soft,tires,

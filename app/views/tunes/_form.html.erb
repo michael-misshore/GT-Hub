@@ -11,10 +11,26 @@
     </div>
   <% end %>
 
+	<!-- Hidden Fields -->
+	<%= f.text_field :user_id, :value => current_user.id, :hidden => true %>
+	<!-- END Hidden Fields -->
+	<div class="field">
+		<%= f.label :tune_type %><br />
+		<%= f.select(:tune_type, options_for_select(['Grip', 'Drift', 'Drag'], @tune.tune_type)) %>
+	</div>
+	<div class="field">
+		<%= f.label :car_id %><br />
+		<%= f.collection_select(:car_id, Car.ordered.all, :id, :display_name) %>
+	</div>
+	<div class="field">
+		<%= f.label :track_id %><br />
+		<%= f.collection_select(:track_id, Track.ordered.all, :id, :name) %>
+	</div>
+
 	<h2>Parts Installed</h2>
 	<table class="parts-table">
 		<tr>
-			<% max_columns = 4 # Setup Max Column Size %>
+			<% max_columns = 3 # Setup Max Column Size %>
 			<% current_column = 0 %>
 			<% Part.get_grouped_parts.each do |group, parts|  %>
 				<% if current_column == max_columns %>
@@ -52,21 +68,6 @@
 		</tr>
 	</table>
 
-	<!-- Hidden Fields -->
-	<%= f.text_field :user_id, :value => current_user.id, :hidden => true %>
-	<!-- END Hidden Fields -->
-	<div class="field">
-		<%= f.label :car_id %><br />
-		<%= f.collection_select(:car_id, Car.ordered.all, :id, :display_name) %>
-	</div>
-	<div class="field">
-		<%= f.label :track_id %><br />
-		<%= f.collection_select(:track_id, Track.ordered.all, :id, :name) %>
-	</div>
-	<div class="field">
-		<%= f.label :track_id %><br />
-		<%= f.collection_select(:track_id, Part.ordered.all, :id, :name) %>
-	</div>
 	<div id="body_chassis_table" style="display: none;">
 		<h2>Body/Chassis</h2>
 	 	<table cellspacing="10px">
@@ -356,8 +357,14 @@ $(document).ready(function() {
 	
 	$("table.parts-table input").change(function() {
 		if ($(this).attr('rel')) {
-			if ($(this).attr('checked')) $($(this).attr('rel')).show();
-			else $($(this).attr('rel')).hide();
+			rel = $(this).attr('rel');
+			num_checked = 0;
+			$('[rel="' + rel + '"]').each(function() {
+				if ($(this).attr('checked')) num_checked++;
+			});
+			
+			if (num_checked) $(rel).show();
+			else $(rel).hide();
 		}
 	});
 	

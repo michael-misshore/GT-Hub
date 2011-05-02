@@ -21,10 +21,10 @@ class Part < ActiveRecord::Base
   
   def self.get_grouped_parts
     grouped_parts = {}
-    Part.select('DISTINCT `group`').all.each do |row|
+    Part.select('DISTINCT `group`').each do |row|
       grouped_parts[row.group] = Part.where('`group` = ?', [row.group]).all
     end
-    grouped_parts
+    grouped_parts.sort
   end
   
 end

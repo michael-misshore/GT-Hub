@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(:version => 20110424213543) do
   end
 
   create_table "parts", :force => true do |t|
-    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
     t.string   "group",       :null => false
     t.string   "html_class",  :null => false
     t.string   "html_ref_id", :null => false
@@ -37,20 +37,20 @@ ActiveRecord::Schema.define(:version => 20110424213543) do
   end
 
   create_table "tracks", :force => true do |t|
-    t.string   "group"
-    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "group"
+    t.string   "name"
   end
 
   create_table "tunes", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "car_id"
     t.integer  "user_id"
     t.integer  "track_id"
     t.integer  "karma",                      :default => 0,      :null => false
-    t.string   "tune_type",                  :default => "grip", :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "tune_type",                  :default => "Grip", :null => false
     t.integer  "downforce_f"
     t.integer  "downforce_r"
     t.integer  "ballast_amount"
@@ -87,12 +87,12 @@ ActiveRecord::Schema.define(:version => 20110424213543) do
     t.float    "toe_r"
     t.integer  "brake_balance_f"
     t.integer  "brake_balance_r"
-    t.integer  "tires_f"
-    t.integer  "tires_r"
     t.integer  "abs"
   end
 
   create_table "users", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "email",                               :default => "", :null => false
     t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
     t.string   "password_salt",                       :default => "", :null => false
@@ -104,8 +104,6 @@ ActiveRecord::Schema.define(:version => 20110424213543) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

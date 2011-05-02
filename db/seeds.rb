@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+Car.import
+Track.import
+Part.import
+User.create([{:email => 'mmisshore@gmail.com', :password => 'getmein'}])

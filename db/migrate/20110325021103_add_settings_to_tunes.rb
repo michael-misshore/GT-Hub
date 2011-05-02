@@ -36,8 +36,6 @@ class AddSettingsToTunes < ActiveRecord::Migration
     add_column :tunes, :toe_r, :float
     add_column :tunes, :brake_balance_f, :int
     add_column :tunes, :brake_balance_r, :int
-    add_column :tunes, :tires_f, :int
-    add_column :tunes, :tires_r, :int
     add_column :tunes, :abs, :int
   end
 
@@ -78,8 +76,6 @@ class AddSettingsToTunes < ActiveRecord::Migration
     remove_column :tunes, :toe_r
     remove_column :tunes, :brake_balance_f
     remove_column :tunes, :brake_balance_r
-    remove_column :tunes, :tires_f
-    remove_column :tunes, :tires_r
     remove_column :tunes, :abs
   end
 end
