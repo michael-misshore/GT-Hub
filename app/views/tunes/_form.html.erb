@@ -55,9 +55,10 @@
 										if !part.html_ref_id.empty?
 											options[:rel] = "##{part.html_ref_id}"
 										end
+										options[:id] = "tune_part_ids_#{part.id}"
 									%>
 									<%= check_box_tag "tune[part_ids][]", part.id, @tune.parts.include?(part), options %>
-									<%= label_tag "tune[part_ids][]", part.name %>
+									<%= label_tag options[:id], part.name %>
 								</td>
 							</tr>
 						<% end # End parts loop %>
@@ -353,20 +354,27 @@
   </div>
 <% end %>
 <script>
+
+function toggle_settings (part_id) {
+	if ($(part_id).attr('rel')) {
+		rel = $(part_id).attr('rel');
+		num_checked = 0;
+		$('table.parts-table input[rel="' + rel + '"]').each(function() {
+			if ($(this).attr('checked')) num_checked++;
+		});
+		
+		if (num_checked) $(rel).show();
+		else $(rel).hide();
+	}
+}
+
 $(document).ready(function() {
-	
 	$("table.parts-table input").change(function() {
-		if ($(this).attr('rel')) {
-			rel = $(this).attr('rel');
-			num_checked = 0;
-			$('[rel="' + rel + '"]').each(function() {
-				if ($(this).attr('checked')) num_checked++;
-			});
-			
-			if (num_checked) $(rel).show();
-			else $(rel).hide();
-		}
+		toggle_settings('#'+$(this).attr('id'));
 	});
 	
+	$("table.parts-table input").each(function() {
+		toggle_settings('#'+$(this).attr('id'));
+	});
 });
 </script>
