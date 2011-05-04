@@ -3,6 +3,7 @@ class TunesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
+    @title = 'Tune Database'
     @tunes = Tune.all
     
     respond_to do |format|
@@ -12,6 +13,7 @@ class TunesController < ApplicationController
   end
 
   def show
+    @title = 'View Tune'
     @tune = Tune.find(params[:id])
 
     respond_to do |format|
@@ -22,7 +24,7 @@ class TunesController < ApplicationController
 
   def new
     @tune = Tune.new
-    @title = 'Tunes'
+    @title = 'Create Tune'
 
     respond_to do |format|
       format.html # new.html.erb
@@ -31,6 +33,7 @@ class TunesController < ApplicationController
   end
 
   def edit
+    @title = 'Edit Tune'
     @tune = Tune.find(params[:id])
   end
 

@@ -1,20 +1,175 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Car:</b>
-  <%= @tune.car_id %>
-</p>
+<h2><%= @tune.car.display_name %> Tune</h2>
+<p><h3><b>by:</b> <%= @tune.user.email %></h3></p>
 
 <p>
-  <b>User:</b>
-  <%= @tune.user_id %>
+  <b>Karma:</b>
+  <%= @tune.karma %>
 </p>
 
 <p>
   <b>Track:</b>
-  <%= @tune.track_id %>
+  <%= @tune.track.name %>
 </p>
 
+<p>
+  <b>Type:</b>
+  <%= @tune.tune_type %>
+</p>
 
-<%= link_to 'Edit', edit_tune_path(@tune) %> |
+<div id="body_chassis_table">
+	<p>
+	  <b>Front Downforce:</b>
+	  <%= display_setting @tune.downforce_f %>
+	</p>
+	<p>
+	  <b>Rear Downforce:</b>
+	  <%= display_setting @tune.downforce_r %>
+	</p>
+	<p>
+	  <b>Ballast Amount:</b>
+	  <%= display_setting @tune.ballast_amount %>
+	</p>
+	<p>
+	  <b>Ballast Position:</b>
+	  <%= display_setting @tune.ballast_position %>
+	</p>
+</div>
+
+<div id="engine_table">
+	<p>
+	  <b>Power Limiter:</b>
+	  <%= display_setting @tune.power_limit %>
+	</p>
+</div>
+
+<div id="transmission_table">
+	<p>
+	  <b>1st Gear:</b>
+	  <%= display_setting @tune.gear_1 %>
+	</p>
+	<p>
+	  <b>2nd Gear:</b>
+	  <%= display_setting @tune.gear_2 %>
+	</p>
+	<p>
+	  <b>3rd Gear:</b>
+	  <%= display_setting @tune.gear_3 %>
+	</p>
+	<p>
+	  <b>4th Gear:</b>
+	  <%= display_setting @tune.gear_4 %>
+	</p>
+	<p>
+	  <b>5th Gear:</b>
+	  <%= display_setting @tune.gear_5 %>
+	</p>
+	<p>
+	  <b>6th Gear:</b>
+	  <%= display_setting @tune.gear_6 %>
+	</p>
+	<p>
+	  <b>7th Gear:</b>
+	  <%= display_setting @tune.gear_7 %>
+	</p>
+	<p>
+	  <b>Final Gear:</b>
+	  <%= display_setting @tune.gear_final %>
+	</p>
+	<p>
+	  <b>Top Speed:</b>
+	  <%= display_setting @tune.top_speed %>
+	</p>
+</div>
+
+<div id="lsd_table">
+	<p>
+	  <b>Front Initial Torque:</b>
+	  <%= display_setting @tune.initial_torque_f %>
+	</p>
+	<p>
+	  <b>Rear Initial Torque:</b>
+	  <%= display_setting @tune.initial_torque_r %>
+	</p>
+	<p>
+	  <b>Front Acceleration Sensitivity:</b>
+	  <%= display_setting @tune.acceleration_sensitivity_f %>
+	</p>
+	<p>
+	  <b>Rear Acceleration Sensitivity:</b>
+	  <%= display_setting @tune.acceleration_sensitivity_r %>
+	</p>
+	<p>
+	  <b>Front Braking Sensitivity:</b>
+	  <%= display_setting @tune.braking_sensitivity_f %>
+	</p>
+	<p>
+	  <b>Rear Braking Sensitivity:</b>
+	  <%= display_setting @tune.braking_sensitivity_r %>
+	</p>
+</div>
+
+<div id="suspension_table">
+	<p>
+	  <b>Front Ride Height:</b>
+	  <%= display_setting @tune.ride_height_f %>
+	</p>
+	<p>
+	  <b>Rear Ride Height:</b>
+	  <%= display_setting @tune.ride_height_r %>
+	</p>
+	<p>
+	  <b>Front Spring Rate (kgf/mm):</b>
+	  <%= display_setting @tune.spring_rate_f %>
+	</p>
+	<p>
+	  <b>Rear Spring Rate (kgf/mm):</b>
+	  <%= display_setting @tune.spring_rate_r %>
+	</p>
+	<p>
+	  <b>Front Dampers (Extension):</b>
+	  <%= display_setting @tune.dampners_ext_f %>
+	</p>
+	<p>
+	  <b>Rear Dampers (Extension):</b>
+	  <%= display_setting @tune.dampners_ext_r %>
+	</p>
+	<p>
+	  <b>Front Dampers (Compression):</b>
+	  <%= display_setting @tune.dampners_comp_f %>
+	</p>
+	<p>
+	  <b>Rear Dampers (Compression):</b>
+	  <%= display_setting @tune.dampners_comp_r %>
+	</p>
+	<p>
+	  <b>Front Anti-Roll Bars:</b>
+	  <%= display_setting @tune.anti_roll_bar_f %>
+	</p>
+	<p>
+	  <b>Rear Anti-Roll Bars:</b>
+	  <%= display_setting @tune.anti_roll_bar_r %>
+	</p>
+	<p>
+	  <b>Front Camber Angle:</b>
+	  <%= display_setting @tune.camber_f %>
+	</p>
+	<p>
+	  <b>Rear Camber Angle:</b>
+	  <%= display_setting @tune.camber_r %>
+	</p>
+	<p>
+	  <b>Front Toe Angle:</b>
+	  <%= display_setting @tune.toe_f %>
+	</p>
+	<p>
+	  <b>Rear Toe Angle:</b>
+	  <%= display_setting @tune.toe_r %>
+	</p>
+</div>
+
+<% if @tune.user_id == current_user.id %>
+	<%= link_to 'Edit', edit_tune_path(@tune) %> |
+<% end %>
 <%= link_to 'Back', tunes_path %>

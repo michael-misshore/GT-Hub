@@ -1,5 +1,3 @@
-<h1>Listing tunes</h1>
-
 <table>
   <tr>
     <th>Karma</th>
@@ -15,7 +13,7 @@
 
 <% @tunes.each do |tune| %>
   <tr>
-	<td><%= tune.tune_type %></td>
+	<td><%= tune.karma %></td>
 	<td><%= tune.tune_type %></td>
     <td><%= tune.car.display_name %></td>
     <td><%= tune.track.name %></td>
