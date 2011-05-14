@@ -1,0 +1,28 @@
+<h1>Account Information</h1>
+<div id="account_info">
+	<p>
+	  <b>Username:</b>
+	  <%= @user.username %>
+	</p>
+	<p>
+	  <b>Email:</b>
+	  <%= @user.email %>
+	</p>
+	<p>
+	  <b>Date Joined:</b>
+	  <%= @user.created_at %>
+	</p>
+	<p>
+	  <b>Group:</b>
+	</p>
+	<p>
+	  <b>Total Karma:</b>
+	</p>
+</div>
+
+<br />
+
+<h1>My Tune's</h1>
+<%= render 'tunes/listing' %><br />
+
+<%= link_to 'Edit Account', edit_user_path %>

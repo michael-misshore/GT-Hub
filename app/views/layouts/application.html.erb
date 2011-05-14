@@ -12,7 +12,12 @@
 	<ul id="header-nav">
 		<li><a href="/">Home</a></li>
 		<li><a href="/tunes">Tune Database</a></li>
-		<li><a href="/users">Account</a></li>
+		<% if user_signed_in? %>	
+			<li><%= link_to 'Account', user_path(current_user) %></li>
+			<li><%= link_to 'Logout', destroy_user_session_path %></li>
+		<% else %>
+			<li><%= link_to 'Login', new_user_session_path %></li>
+		<% end %>
 	</ul>
 	<div id="logo">
 		<%= image_tag("logo.png") %>
