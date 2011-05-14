@@ -19,6 +19,11 @@ class User < ActiveRecord::Base
     where(:username => id).first
   end
   
+  def total_karma(user_id = nil)
+    user_id = self.id if (user_id.nil?)
+    Tune.select("SUM(karma) AS karma").where("user_id = ?", user_id).group("user_id").first.karma
+  end
+  
 protected
 
  def self.find_for_database_authentication(warden_conditions)
