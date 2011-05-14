@@ -2,12 +2,12 @@ Factory.sequence :email do |n|
   "email#{n}@factory-#{n}.com"
 end
 
-Factory.sequence :username do |n|
-  "user_#{n}"
+Factory.sequence :tuner_name do |n|
+  "tuner_#{n}"
 end
 
-Factory.define :user do |f|
-  f.username { Factory.next(:username) }
+Factory.define :tuner do |f|
+  f.tuner_name { Factory.next(:tuner_name) }
   f.email { Factory.next(:email) }
   f.password  'getmein'
 end

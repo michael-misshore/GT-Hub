@@ -12,11 +12,11 @@
 	<ul id="header-nav">
 		<li><a href="/">Home</a></li>
 		<li><a href="/tunes">Tune Database</a></li>
-		<% if user_signed_in? %>	
-			<li><%= link_to 'Account', user_path(current_user) %></li>
-			<li><%= link_to 'Logout', destroy_user_session_path %></li>
+		<% if tuner_signed_in? %>	
+			<li><%= link_to 'Account', tuner_path(current_tuner) %></li>
+			<li><%= link_to 'Logout', destroy_tuner_session_path %></li>
 		<% else %>
-			<li><%= link_to 'Login', new_user_session_path %></li>
+			<li><%= link_to 'Login', new_tuner_session_path %></li>
 		<% end %>
 	</ul>
 	<div id="logo">

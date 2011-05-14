@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(:version => 20110511011127) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "car_id"
-    t.integer  "user_id"
+    t.integer  "tuner_id"
     t.integer  "track_id"
     t.integer  "karma",                      :default => 0,      :null => false
     t.string   "tune_type",                  :default => "Grip", :null => false
@@ -90,9 +90,10 @@ ActiveRecord::Schema.define(:version => 20110511011127) do
     t.integer  "abs"
   end
 
-  create_table "users", :force => true do |t|
+  create_table "tuners", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "tuner_name",                                          :null => false
     t.string   "email",                               :default => "", :null => false
     t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
     t.string   "password_salt",                       :default => "", :null => false
@@ -104,10 +105,10 @@ ActiveRecord::Schema.define(:version => 20110511011127) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "username",                                            :null => false
   end
-
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  
+  add_index "tuners", ["tuner_name"], :name => "index_tuners_on_tuner_name", :unique => true
+  add_index "tuners", ["email"], :name => "index_tuners_on_email", :unique => true
+  add_index "tuners", ["reset_password_token"], :name => "index_tuners_on_reset_password_token", :unique => true
 
 end

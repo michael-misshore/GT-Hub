@@ -13,8 +13,8 @@ describe TunesController do
   end
   
   before (:each) do
-    @user = Factory.create(:user)
-    sign_in @user
+    @tuner = Factory.create(:tuner)
+    sign_in @tuner
   end
 
   describe "GET index" do

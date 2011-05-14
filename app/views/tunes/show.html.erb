@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h2><%= @tune.car.display_name %> Tune</h2>
-<p><h3><b>Tuner:</b> <%= @tune.user.username %></h3></p>
+<p><h3><b>Tuner:</b> <%= @tune.tuner.tuner_name %></h3></p>
 
 <p>
   <b>Karma:</b>
@@ -169,7 +169,7 @@
 	</p>
 </div>
 
-<% if @tune.user_id == current_user.id %>
+<% if @tune.tuner_id == current_tuner.id %>
 	<%= link_to 'Edit', edit_tune_path(@tune) %> |
 <% end %>
 <%= link_to 'Back', tunes_path %>

@@ -4,12 +4,12 @@ describe "tunes/show.html.erb" do
   include Devise::TestHelpers
   
   before(:each) do
-    @user = Factory(:user)
-    sign_in @user
+    @tuner = Factory(:tuner)
+    sign_in @tuner
     
     @tune = assign(:tune, stub_model(Tune,
       :car_id => 1,
-      :user_id => 1,
+      :tuner_id => 1,
       :track_id => 1
     ))
   end

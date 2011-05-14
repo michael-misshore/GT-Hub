@@ -9,4 +9,4 @@
 Car.import
 Track.import
 Part.import
-User.create([{:email => 'mmisshore@gmail.com', :password => 'getmein'}])
+Tuner.create([{:tuner_name => 'Thaboymike', :email => 'mmisshore@gmail.com', :password => 'getmein'}])

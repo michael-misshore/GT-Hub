@@ -1,11 +1,11 @@
 class Tune < ActiveRecord::Base
   belongs_to :car
   belongs_to :track
-  belongs_to :user
+  belongs_to :tuner
   has_and_belongs_to_many :parts
 
   validates_associated :car
-  validates_associated :user
+  validates_associated :tuner
   validates_inclusion_of :tune_type, :in => %w(Grip Drift Drag)
   validates_numericality_of :downforce_f, :only_integer => true, :allow_blank => true
   validates_numericality_of :downforce_r, :only_integer => true, :allow_blank => true

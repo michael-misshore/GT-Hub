@@ -1,6 +1,6 @@
 class TunesController < ApplicationController
   
-  before_filter :authenticate_user!
+  before_filter :authenticate_tuner!
 
   def index
     @title = 'Tune Database'
