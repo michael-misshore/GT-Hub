@@ -7,11 +7,7 @@ describe "tunes/show.html.erb" do
     @tuner = Factory(:tuner)
     sign_in @tuner
     
-    @tune = assign(:tune, stub_model(Tune,
-      :car_id => 1,
-      :tuner_id => 1,
-      :track_id => 1
-    ))
+    @tune = assign(:tune, Factory(:tune))
   end
 
   it "renders attributes in <p>" do
