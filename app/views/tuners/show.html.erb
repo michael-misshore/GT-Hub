@@ -1,23 +1,33 @@
-<h1>Tuner Information</h1>
 <div id="account_info">
 	<p>
-	  <b>tuner_name:</b>
-	  <%= @tuner.tuner_name %>
+		<b>Tuner Name:</b>
+		<%= @tuner.tuner_name %>
 	</p>
 	<p>
-	  <b>Email:</b>
-	  <%= @tuner.email %>
+		<b>Email:</b>
+		<%= @tuner.email %>
 	</p>
 	<p>
-	  <b>Date Joined:</b>
-	  <%= format_date(@tuner.created_at) %>
+		<b>Date Joined:</b>
+		<%= format_date(@tuner.created_at) %>
 	</p>
 	<p>
-	  <b>Group:</b>
+		<b>Group:</b>
+		<% if @tuner.group_id == 0 %>
+			None | 
+			<%= link_to 'Create a Group', new_group_path %> | 
+			<%= link_to 'View Groups', groups_path %>
+		<% else %>
+			<%= @tuner.group.name %> | 
+			<% if @tuner.id = @tuner.group.admin_id %>
+				<%= link_to 'Edit Group', edit_group_path(@tuner.group) %> | 
+			<% end %>
+			<%= link_to 'View Group', group_path(@tuner.group) %>
+		<% end %>
 	</p>
 	<p>
-	  <b>Total Karma:</b>
-	  <%= @tuner.total_karma %>
+		<b>Total Karma:</b>
+		<%= @tuner.total_karma %>
 	</p>
 </div>
 
@@ -26,4 +36,4 @@
 <h1>Tunes</h1>
 <%= render 'tunes/listing' %><br />
 
-<%= link_to 'Edit Account', edit_tuner_path %>
+<%= link_to 'Edit Account', edit_tuner_path %><br />

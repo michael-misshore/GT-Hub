@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110511011127) do
+ActiveRecord::Schema.define(:version => 20110516015250) do
 
   create_table "cars", :force => true do |t|
     t.datetime "created_at"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(:version => 20110511011127) do
     t.boolean  "premium",    :default => false
     t.boolean  "standard",   :default => false
   end
+
+  create_table "groups", :force => true do |t|
+    t.string   "name",       :null => false
+    t.text     "message"
+    t.integer  "admin_id",   :null => false
+    t.integer  "private",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "groups", ["name"], :name => "index_groups_on_name", :unique => true
 
   create_table "parts", :force => true do |t|
     t.datetime "created_at"
@@ -42,6 +53,28 @@ ActiveRecord::Schema.define(:version => 20110511011127) do
     t.string   "group"
     t.string   "name"
   end
+
+  create_table "tuners", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "tuner_name",                                          :null => false
+    t.string   "email",                               :default => "", :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "password_salt",                       :default => "", :null => false
+    t.string   "reset_password_token"
+    t.string   "remember_token"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                       :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.integer  "group_id",                            :default => 0,  :null => false
+  end
+
+  add_index "tuners", ["email"], :name => "index_tuners_on_email", :unique => true
+  add_index "tuners", ["reset_password_token"], :name => "index_tuners_on_reset_password_token", :unique => true
+  add_index "tuners", ["tuner_name"], :name => "index_tuners_on_tuner_name", :unique => true
 
   create_table "tunes", :force => true do |t|
     t.datetime "created_at"
@@ -89,26 +122,5 @@ ActiveRecord::Schema.define(:version => 20110511011127) do
     t.integer  "brake_balance_r"
     t.integer  "abs"
   end
-
-  create_table "tuners", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "tuner_name",                                          :null => false
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                       :default => "", :null => false
-    t.string   "reset_password_token"
-    t.string   "remember_token"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                       :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-  end
-  
-  add_index "tuners", ["tuner_name"], :name => "index_tuners_on_tuner_name", :unique => true
-  add_index "tuners", ["email"], :name => "index_tuners_on_email", :unique => true
-  add_index "tuners", ["reset_password_token"], :name => "index_tuners_on_reset_password_token", :unique => true
 
 end

@@ -1,4 +1,6 @@
 class Tuner < ActiveRecord::Base
+  belongs_to :group
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   devise :database_authenticatable, :registerable,
@@ -10,6 +12,8 @@ class Tuner < ActiveRecord::Base
   
   # Setup accessible (or protected) attributes for your model
   attr_accessible :tuner_name, :email, :password, :password_confirmation, :remember_me, :login
+  
+  validates_uniqueness_of :tuner_name, :case_sensitive => false 
     
   def to_param
     tuner_name.downcase

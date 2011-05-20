@@ -1,6 +1,5 @@
 class TunersController < ApplicationController  
-  
-  before_filter :authenticate_tuner! 
+  before_filter :authenticate_tuner!
   
   def index
     @title = 'Tuners'
@@ -14,7 +13,7 @@ class TunersController < ApplicationController
   
   def show
     @tuner = Tuner.find_by_param(params[:id])
-    @title = @tuner.tuner_name
+    @title = "#{@tuner.tuner_name}'s Garage"
     @tunes = Tune.find_all_by_tuner_id(@tuner.id)
 
     respond_to do |format|
