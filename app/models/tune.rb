@@ -2,6 +2,7 @@ class Tune < ActiveRecord::Base
   belongs_to :car
   belongs_to :track
   belongs_to :tuner
+  has_many :karma_points
   has_and_belongs_to_many :parts
 
   validates_associated :car
@@ -45,4 +46,15 @@ class Tune < ActiveRecord::Base
   validates_numericality_of :brake_balance_r, :only_integer => true, :allow_blank => true
   validates_numericality_of :abs, :only_integer => true, :allow_blank => true
   
+  before_create :add_karma_point
+  
+  def karma 
+    karma_points.inject(0) {|sum, k| sum + k.karma }
+  end
+  
+  def add_karma_point(karma_point = 1)
+    # We need to remove the existing karma for a tuner.
+    karma_points.delete(karma_points.find(:all, :conditions => ["tuner_id = ?", tuner_id]))
+    karma_points << KarmaPoint.new(:tuner_id => tuner_id, :karma => karma_point)
+  end
 end 

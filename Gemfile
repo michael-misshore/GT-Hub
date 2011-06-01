@@ -9,7 +9,7 @@ gem 'factory_girl_rails'
 gem "jquery-rails"
 
 group :development, :test do
-  gem "rspec-rails", ">= 2.5.0"
+  gem "rspec-rails", ">= 2.6.0"
 end
 
 

@@ -1,7 +1,12 @@
 require 'spec_helper'
 
 describe "tunes/index.html.erb" do
+  include Devise::TestHelpers
+  
   before(:each) do
+    @tuner = Factory.create(:tuner)
+    sign_in @tuner
+    
     assign(:tunes, [
       Factory(:tune),
       Factory(:tune)

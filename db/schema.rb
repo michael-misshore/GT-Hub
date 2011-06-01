@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110516015250) do
+ActiveRecord::Schema.define(:version => 20110525011724) do
 
   create_table "cars", :force => true do |t|
     t.datetime "created_at"
@@ -32,6 +32,14 @@ ActiveRecord::Schema.define(:version => 20110516015250) do
   end
 
   add_index "groups", ["name"], :name => "index_groups_on_name", :unique => true
+
+  create_table "karma_points", :force => true do |t|
+    t.integer  "tuner_id"
+    t.integer  "tune_id"
+    t.integer  "karma"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "parts", :force => true do |t|
     t.datetime "created_at"
@@ -82,7 +90,6 @@ ActiveRecord::Schema.define(:version => 20110516015250) do
     t.integer  "car_id"
     t.integer  "tuner_id"
     t.integer  "track_id"
-    t.integer  "karma",                      :default => 0,      :null => false
     t.string   "tune_type",                  :default => "Grip", :null => false
     t.integer  "downforce_f"
     t.integer  "downforce_r"
