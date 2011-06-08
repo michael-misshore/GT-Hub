@@ -2,7 +2,7 @@ class Tune < ActiveRecord::Base
   belongs_to :car
   belongs_to :track
   belongs_to :tuner
-  has_many :karma_points
+  has_many :karma_points, :dependent => :delete_all
   has_and_belongs_to_many :parts
 
   validates_associated :car

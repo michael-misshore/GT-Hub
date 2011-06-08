@@ -22,10 +22,10 @@
 				<% no_registered_votes = !registered_upvote && !registered_downvote %>
 
 				<span id="upvote_<%= tune.id %>"<%= ' style=display:none;' unless no_registered_votes || registered_downvote %>>
-					<%= link_to 'Upvote', '#', { :id => tune.id, :onclick => 'add_karam_point(this.id, 1)' } %>
+					<%= link_to 'Upvote', '', { :id => tune.id, :onclick => 'add_karam_point(this.id, 1);return false;' } %>
 				</span><br>
 				<span id="downvote_<%= tune.id %>"<%= ' style=display:none;' unless no_registered_votes || registered_upvote %>>
-					<%= link_to 'Downvote', '#', { :id => tune.id, :onclick => 'add_karam_point(this.id, -1)' } %>
+					<%= link_to 'Downvote', '', { :id => tune.id, :onclick => 'add_karam_point(this.id, -1);return false;' } %>
 				</span>
 			<% end %>
 		</td>
@@ -48,7 +48,7 @@
 <script>
 function add_karam_point(tune_id, point) {
 	$.get('/tunes/add_karma_point.json', {id: tune_id, point: point}, function(data) {
-		$('#karma_points_' + tune_id).html(data);
+		$('#karma_points_' + tune_id).html(data.tune_karma);
 		if (point == 1) {
 			$("#downvote_" + tune_id).show();
 			$("#upvote_" + tune_id).hide();
@@ -58,6 +58,9 @@ function add_karam_point(tune_id, point) {
 		}
 		
 		// If #total_karma exists (span on a tuners page which show the total karma). Grab the latest value
-	});
+		if ($('#total_karma').length > 0) {
+			$('#total_karma').html(data.total_karma)
+		}
+	}, 'json');
 }
 </script>
