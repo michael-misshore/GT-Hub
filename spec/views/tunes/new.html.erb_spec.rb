@@ -7,7 +7,8 @@ describe "tunes/new.html.erb" do
     @tuner = Factory.create(:tuner)
     sign_in @tuner
     
-    assign(:tune, Factory(:tune))
+    @tune = Factory(:tune)
+    @groups = {}
   end
 
   it "renders new tune form" do

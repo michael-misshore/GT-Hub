@@ -25,6 +25,7 @@ class TunesController < ApplicationController
   def new
     @tune = Tune.new
     @title = 'Create Tune'
+    @groups = Part.get_groups_hash()
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +36,7 @@ class TunesController < ApplicationController
   def edit
     @title = 'Edit Tune'
     @tune = Tune.find(params[:id])
+    @groups = Part.get_groups_hash()
   end
 
   # POST /tunes

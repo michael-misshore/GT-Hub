@@ -14,63 +14,39 @@
 	<!-- Hidden Fields -->
 	<%= f.text_field :tuner_id, :value => current_tuner.id, :hidden => true %>
 	<!-- END Hidden Fields -->
-	<div class="field">
-		<%= f.label :tune_type %><br />
-		<%= f.select(:tune_type, options_for_select(['Grip', 'Drift', 'Drag'], @tune.tune_type)) %>
+	
+	<div id="tunetabs">
+		<ul>
+			<li><a href="#basic_info">Basic</a></li>
+			<% @groups.each do | group, subgroups | %>
+				<li><a href="#<%= group.downcase.gsub(/(\s|\/)/, "_") %>"><%= group %></a></li>
+			<% end %>
+		</ul>
+		
+		
+		<div id="basic_info">
+			<div class="field">
+				<b><%= f.label :tune_type %></b><br />
+				<%= f.select(:tune_type, options_for_select(['Grip', 'Drift', 'Drag'], @tune.tune_type)) %>
+			</div>
+			<div class="field">
+				<b><%= f.label :car_id %></b><br />
+				<%= f.collection_select(:car_id, Car.ordered.all, :id, :display_name) %>
+			</div>
+			<div class="field">
+				<b><%= f.label :track_id %></b><br />
+				<%= f.collection_select(:track_id, Track.ordered.all, :id, :name) %>
+			</div>
+		</div>
+		
+		<%= raw get_parts_html(@tune, @groups) %>
+		
+		<%= f.submit %>
 	</div>
-	<div class="field">
-		<%= f.label :car_id %><br />
-		<%= f.collection_select(:car_id, Car.ordered.all, :id, :display_name) %>
-	</div>
-	<div class="field">
-		<%= f.label :track_id %><br />
-		<%= f.collection_select(:track_id, Track.ordered.all, :id, :name) %>
-	</div>
-
-	<h2>Parts Installed</h2>
-	<table class="parts-table">
-		<tr>
-			<% max_columns = 3 # Setup Max Column Size %>
-			<% current_column = 0 %>
-			<% Part.get_grouped_parts.each do |group, parts|  %>
-				<% if current_column == max_columns %>
-					</tr>
-					<tr>
-					<% current_column = 0 %>
-				<% end # End if %>
-				<td>
-					<table>
-						<tr>
-							<th><%= group %></th>
-						</tr>
-						<% parts.each do |part| %>
-							<tr>
-								<td>
-									<% 
-										# Preparing the options array
-										options = Hash.new
-										if !part.html_class.empty?
-											options[:class] = part.html_class
-										end
-										if !part.html_ref_id.empty?
-											options[:rel] = "##{part.html_ref_id}"
-										end
-										options[:id] = "tune_part_ids_#{part.id}"
-									%>
-									<%= check_box_tag "tune[part_ids][]", part.id, @tune.parts.include?(part), options %>
-									<%= label_tag options[:id], part.name %>
-								</td>
-							</tr>
-						<% end # End parts loop %>
-					</table>
-				</td>
-				<% current_column += 1 %>
-			<% end # End grouped parts loop %>
-		</tr>
-	</table>
+	
+	<!-- Settings -->
 
 	<div id="body_chassis_table" style="display: none;">
-		<h2>Body/Chassis</h2>
 	 	<table cellspacing="10px">
 			<tr>
 				<th><h3>Aero</h3></th>
@@ -90,7 +66,7 @@
 				</td>
 			</tr>
 			<tr>
-				<th><h4>Weight Adjusment</h4></th>
+				<th><h4>Weight Adjustment</h4></th>
 			</tr>
 			<tr>
 				<td>
@@ -110,7 +86,6 @@
 	</div>
 	
 	<div id="engine_table" style="display: none;">	
-		<h2>Engine</h2>
 		<table cellspacing="10px">
 			<tr>
 				<td>
@@ -124,7 +99,6 @@
 	</div>
 	
 	<div id="transmission_table" style="display: none;">
-		<h2>Fully Customizable Transmission</h2>
 		<table cellspacing="10px">
 			<tr>
 				<td>
@@ -186,11 +160,7 @@
 	</div>
 	
 	<div id="lsd_table" style="display: none;">
-		<h2>Drivetrain</h2>
 		<table cellspacing="10px">
-			<tr>
-				<th><h3>Adjustable LSD</h3></th>
-			</tr>
 			<tr>
 				<td>
 					<div class="field">
@@ -235,16 +205,9 @@
 	</div>
 		
 	<div id="suspension_table" style="display: none;">
-		<h2>Suspension</h2>
 		<table cellspacing="10px">
 			<tr>
-				<th><h3>Fully Customizable Kit</h3></th>
-			</tr>
-			<tr>
 				<tbody>
-					<tr>
-						<th><h4>Suspension</h4></th>
-					</tr>
 					<tr>
 						<td>
 							<div class="field">
@@ -348,33 +311,65 @@
 			</tr>
 		</table>
 	</div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
 <script>
 
-function toggle_settings (part_id) {
-	if ($(part_id).attr('rel')) {
-		rel = $(part_id).attr('rel');
+function toggle_settings_for_input (input_id) {
+	if ($(input_id).attr('rel')) {
+		rel = $(input_id).attr('rel');
 		num_checked = 0;
-		$('table.parts-table input[rel="' + rel + '"]').each(function() {
+		$('#tunetabs input[rel="' + rel + '"]').each(function() {
 			if ($(this).attr('checked')) num_checked++;
 		});
 		
-		if (num_checked) $(rel).show();
-		else $(rel).hide();
+		if (num_checked) {
+			move_settings(rel, input_id)
+			$(rel).show();
+		} else $(rel).hide();
+	}
+}
+
+function toggle_settings_for_select (select_id) {
+	select_value = $(select_id).val();
+	select_has_rel_option = ($(select_id).find('option[rel]').length > 0);
+	selected_option = $(select_id).find('option[value='+select_value+']').first();
+	
+	if (selected_option.attr('rel')) {
+		move_settings(selected_option.attr('rel'), select_id)
+		$(selected_option.attr('rel')).show();
+	}
+	else if (select_has_rel_option) {
+		$(select_id).find('option[rel]').each(function() {
+			$($(this).attr('rel')).hide();
+		});
+	}
+}
+
+function move_settings (rel, part_id) {
+	var settings_div = $(rel);
+	if ($(part_id).parent('div') != settings_div) {
+		$(rel).remove();
+		$(part_id).parent('div').append(settings_div);
 	}
 }
 
 $(document).ready(function() {
-	$("table.parts-table input").change(function() {
-		toggle_settings('#'+$(this).attr('id'));
+	$("#tunetabs").tabs();
+	
+	$("#tunetabs input").change(function() {
+		toggle_settings_for_input('#'+$(this).attr('id'));
 	});
 	
-	$("table.parts-table input").each(function() {
-		toggle_settings('#'+$(this).attr('id'));
+	$("#tunetabs select").change(function() {
+		toggle_settings_for_select('#'+$(this).attr('id'));
+	});
+	
+	$("#tunetabs input").each(function() {
+		toggle_settings_for_input('#'+$(this).attr('id'));
+	});
+	
+	$("#tunetabs select").each(function() {
+		toggle_settings_for_select('#'+$(this).attr('id'));
 	});
 });
 </script>

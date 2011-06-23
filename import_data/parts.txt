@@ -1,39 +1,35 @@
 ==Body/Chassis==
-Weight Reduction Stage 1,,
-Weight Reduction Stage 2,,
-Weight Reduction Stage 3,,
+Weight Reduction Stage 1,weight_reduction,
+Weight Reduction Stage 2,weight_reduction,
+Weight Reduction Stage 3,weight_reduction,
 Chassis Reinforcement,,
 Window Weight Reduction,,
 Carbon Hood,,
+===Aero===
+Front Aero,,body_chassis_table
+Spoiler,,body_chassis_table
 
 ==Engine==
-Engine Tuning Stage 1,,engine_table
-Engine Tuning Stage 2,,
-Engine Tuning Stage 3,,
-ECU Tuning,,
-
-==Intake System==
+===Intake System===
 Sports Intake Manifold,,
 Racing Filter,intake,
 Sports Air Filter,intake,
-
-==Exhaust==
+===Exhaust===
 Sports Exhaust,exhaust,
 Titanium Semi-Racing Exhaust,exhaust,
 Titanium Racing Exhaust,exhaust,
 Sports Exhaust Manifold,,
 Catalytic Converter: Sports,,
-
-==Turbo Kits==
+===Forced Induction===
 Low RPM Range Turbo Kit,force_induction,
 Mid RPM Range Turbo Kit,force_induction,
 High RPM Range Turbo Kit,force_induction,
 Supercharger,force_induction,
-
-==Transmission==
-5 speed Close-Ratio Transmission,tranny,
-6 speed Close-Ratio Transmission,tranny,
-Fully Customizable Transmission,tranny,transmission_table
+===Engine Tuning===
+Engine Tuning Stage 1,engine_tuning,engine_table
+Engine Tuning Stage 2,engine_tuning,engine_table
+Engine Tuning Stage 3,engine_tuning,engine_table
+ECU Tuning,,
 
 ==Drivetrain==
 Single Plate Clutch,clutch,
@@ -43,13 +39,16 @@ Sports Flywheel,flywheel,
 Carbon Drive Shaft,,
 Torque Sensing Center Differential,,
 Adjustable LSD,,lsd_table
+===Transmission===
+5 speed Close-Ratio Transmission,tranny,
+6 speed Close-Ratio Transmission,tranny,
+Fully Customizable Transmission,tranny,transmission_table
 
-==Suspension==
+==Suspension/Tires==
 Fixed Sports Kit,suspension,
 Height-Adjustable Sports Kit,suspension,
 Fully Customizable Kit,suspension,suspension_table
-
-==Tires - Front==
+===Tires - Front===
 Comfort Hard,tires,
 Comfort Medium,tires,
 Comfort Soft,tires,
@@ -59,8 +58,7 @@ Sport Soft,tires,
 Racing Hard,tires,
 Racing Medium,tires,
 Racing Soft,tires,
-
-==Tires - Rear==
+===Tires - Rear===
 Comfort Hard,tires,
 Comfort Medium,tires,
 Comfort Soft,tires,
@@ -70,7 +68,3 @@ Sport Soft,tires,
 Racing Hard,tires,
 Racing Medium,tires,
 Racing Soft,tires,
-
-==Aero==
-Front Aero,,body_chassis_table
-Spoiler,,body_chassis_table

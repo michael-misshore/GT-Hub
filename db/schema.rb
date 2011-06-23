@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110525011724) do
+ActiveRecord::Schema.define(:version => 20110615012329) do
 
   create_table "cars", :force => true do |t|
     t.datetime "created_at"
@@ -45,9 +45,10 @@ ActiveRecord::Schema.define(:version => 20110525011724) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-    t.string   "group",       :null => false
-    t.string   "html_class",  :null => false
-    t.string   "html_ref_id", :null => false
+    t.string   "group",                           :null => false
+    t.string   "select_class",                    :null => false
+    t.string   "settings_div_id",                 :null => false
+    t.string   "subgroup",        :default => "", :null => false
   end
 
   create_table "parts_tunes", :id => false, :force => true do |t|

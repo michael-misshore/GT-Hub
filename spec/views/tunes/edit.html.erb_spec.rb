@@ -7,6 +7,7 @@ describe "tunes/edit.html.erb" do
     @tuner = Factory(:tuner)
     sign_in @tuner
     @tune = Factory(:tune)
+    @groups = {}
   end
 
   it "renders the edit tune form" do
