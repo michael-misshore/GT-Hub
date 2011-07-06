@@ -1,0 +1,44 @@
+<div id="lsd_table" style="display: none;">
+	<table cellspacing="10px">
+		<tr>
+			<td>
+				<div class="field">
+					<%= f.label :initial_torque_f, 'Front Initial Torque' %><br />
+					<%= f.text_field :initial_torque_f, :size => 4 %>
+				</div>
+			</td>
+			<td>
+				<div class="field">
+					<%= f.label :acceleration_sensitivity_f, 'Front Acceleration Sensitivity' %><br />
+					<%= f.text_field :acceleration_sensitivity_f, :size => 4 %>
+				</div>
+			</td>
+			<td>
+				<div class="field">
+					<%= f.label :braking_sensitivity_f, 'Front Braking Sensitivity' %><br />
+					<%= f.text_field :braking_sensitivity_f, :size => 4 %>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="field">
+					<%= f.label :initial_torque_r, 'Rear Initial Torque' %><br />
+					<%= f.text_field :initial_torque_r, :size => 4 %>
+				</div>
+			</td>
+			<td>
+				<div class="field">
+					<%= f.label :acceleration_sensitivity_r, 'Rear Acceleration Sensitivity' %><br />
+					<%= f.text_field :acceleration_sensitivity_r, :size => 4 %>
+				</div>
+			</td>
+			<td>
+				<div class="field">
+					<%= f.label :braking_sensitivity_r, 'Rear Braking Sensitivity' %><br />
+					<%= f.text_field :braking_sensitivity_r, :size => 4 %>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>

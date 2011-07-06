@@ -15,6 +15,7 @@ class TunesController < ApplicationController
   def show
     @title = 'View Tune'
     @tune = Tune.find(params[:id])
+    @groups = Part.get_groups_hash()
 
     respond_to do |format|
       format.html # show.html.erb
@@ -46,7 +47,7 @@ class TunesController < ApplicationController
 
     respond_to do |format|
       if @tune.save
-        format.html { redirect_to(@tune, :notice => 'Tune was successfully created.') }
+        format.html { redirect_to(@tune, :notice => 'Your tune was successfully created.') }
         format.xml  { render :xml => @tune, :status => :created, :location => @tune }
       else
         format.html { render :action => "new" }
@@ -62,7 +63,7 @@ class TunesController < ApplicationController
 
     respond_to do |format|
       if @tune.update_attributes(params[:tune])
-        format.html { redirect_to(@tune, :notice => 'Tune was successfully updated.') }
+        format.html { redirect_to(@tune, :notice => 'Your tune was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

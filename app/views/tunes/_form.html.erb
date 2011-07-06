@@ -39,279 +39,12 @@
 			</div>
 		</div>
 		
-		<%= raw get_parts_html(@tune, @groups) %>
+		<%= render :partial => 'parts', :locals => { :groups => @groups, :tune => @tune, :f => f } %>
 		
 		<%= f.submit %>
 	</div>
-	
-	<!-- Settings -->
-
-	<div id="body_chassis_table" style="display: none;">
-	 	<table cellspacing="10px">
-			<tr>
-				<th><h3>Aero</h3></th>
-			</tr>
-			<tr>
-				<td>
-					<div class="field">
-						<%= f.label :downforce_f, 'Front Downforce' %><br />
-						<%= f.text_field :downforce_f, :size => 3 %>
-					</div>
-				</td>
-				<td>
-					<div class="field">
-						<%= f.label :downforce_r, 'Rear Downforce' %><br />
-						<%= f.text_field :downforce_r, :size => 3 %>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<th><h4>Weight Adjustment</h4></th>
-			</tr>
-			<tr>
-				<td>
-					<div class="field">
-						<%= f.label :ballast_amount, 'Ballast Amount(kg)' %><br />
-						<%= f.text_field :ballast_amount, :size => 3 %>
-					</div>
-				</td>
-				<td>
-					<div class="field">
-						<%= f.label :ballast_position, 'Ballast Position' %><br />
-						<%= f.text_field :ballast_position, :size => 3 %>
-					</div>
-				</td>
-			</tr>
-		</table>
-	</div>
-	
-	<div id="engine_table" style="display: none;">	
-		<table cellspacing="10px">
-			<tr>
-				<td>
-					<div class="field">
-						<%= f.label :power_limit, 'Power Limiter' %><br />
-						<%= f.text_field :power_limit, :size => 3 %>
-					</div>
-				</td>
-			</tr>
-		</table>
-	</div>
-	
-	<div id="transmission_table" style="display: none;">
-		<table cellspacing="10px">
-			<tr>
-				<td>
-					<div class="field">
-						<%= f.label :gear_1, '1st Gear' %><br />
-						<%= f.text_field :gear_1, :size => 4 %>
-					</div>
-				</td>
-				<td>
-					<div class="field">
-						<%= f.label :gear_2, '2nd Gear' %><br />
-						<%= f.text_field :gear_2, :size => 4 %>
-					</div>
-				</td>
-				<td>
-					<div class="field">
-						<%= f.label :gear_3, '3rd Gear' %><br />
-						<%= f.text_field :gear_3, :size => 4 %>
-					</div>
-				</td>
-				<td>
-					<div class="field">
-						<%= f.label :gear_4, '4th Gear' %><br />
-						<%= f.text_field :gear_4, :size => 4 %>
-					</div>
-				</td>
-				<td>
-					<div class="field">
-						<%= f.label :gear_5, '5th Gear' %><br />
-						<%= f.text_field :gear_5, :size => 4 %>
-					</div>
-				</td>
-				<td>
-					<div class="field">
-						<%= f.label :gear_6, '6th Gear' %><br />
-						<%= f.text_field :gear_6, :size => 4 %>
-					</div>
-				</td>
-				<td>	
-					<div class="field">
-						<%= f.label :gear_7, '7th Gear' %><br />
-						<%= f.text_field :gear_7, :size => 4 %>
-					</div>
-				</td>
-				<td>	
-					<div class="field">
-						<%= f.label :gear_final, 'Final Gear' %><br />
-						<%= f.text_field :gear_final, :size => 4 %>
-					</div>
-				</td>
-				<td>	
-					<div class="field">
-						<%= f.label :top_speed, 'Top Speed' %><br />
-						<%= f.text_field :top_speed, :size => 4 %>
-					</div>
-				</td>
-			</tr>
-		</table>
-	</div>
-	
-	<div id="lsd_table" style="display: none;">
-		<table cellspacing="10px">
-			<tr>
-				<td>
-					<div class="field">
-						<%= f.label :initial_torque_f, 'Front Initial Torque' %><br />
-						<%= f.text_field :initial_torque_f, :size => 4 %>
-					</div>
-				</td>
-				<td>
-					<div class="field">
-						<%= f.label :acceleration_sensitivity_f, 'Front Acceleration Sensitivity' %><br />
-						<%= f.text_field :acceleration_sensitivity_f, :size => 4 %>
-					</div>
-				</td>
-				<td>
-					<div class="field">
-						<%= f.label :braking_sensitivity_f, 'Front Braking Sensitivity' %><br />
-						<%= f.text_field :braking_sensitivity_f, :size => 4 %>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="field">
-						<%= f.label :initial_torque_r, 'Rear Initial Torque' %><br />
-						<%= f.text_field :initial_torque_r, :size => 4 %>
-					</div>
-				</td>
-				<td>
-					<div class="field">
-						<%= f.label :acceleration_sensitivity_r, 'Rear Acceleration Sensitivity' %><br />
-						<%= f.text_field :acceleration_sensitivity_r, :size => 4 %>
-					</div>
-				</td>
-				<td>
-					<div class="field">
-						<%= f.label :braking_sensitivity_r, 'Rear Braking Sensitivity' %><br />
-						<%= f.text_field :braking_sensitivity_r, :size => 4 %>
-					</div>
-				</td>
-			</tr>
-		</table>
-	</div>
-		
-	<div id="suspension_table" style="display: none;">
-		<table cellspacing="10px">
-			<tr>
-				<tbody>
-					<tr>
-						<td>
-							<div class="field">
-								<%= f.label :ride_height_f, 'Front Ride Height Adjustment (mm)' %><br />
-								<%= f.text_field :ride_height_f, :size => 4 %>
-							</div>
-						</td>
-						<td>
-							<div class="field">
-								<%= f.label :spring_rate_f, 'Front Spring Rate (kgf/mm)' %><br />
-								<%= f.text_field :spring_rate_f, :size => 4 %>
-							</div>
-						</td>
-						<td>
-							<div class="field">
-								<%= f.label :dampners_ext_f, 'Front Dampers (Extension)' %><br />
-								<%= f.text_field :dampners_ext_f, :size => 4 %>
-							</div>
-						</td>
-						<td>
-							<div class="field">
-								<%= f.label :dampners_comp_f, 'Front Dampers (Compression)' %><br />
-								<%= f.text_field :dampners_comp_f, :size => 4 %>
-							</div>
-						</td>
-						<td>
-							<div class="field">
-								<%= f.label :anti_roll_bar_f, 'Front Anti-Roll Bars' %><br />
-								<%= f.text_field :anti_roll_bar_f, :size => 4 %>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="field">
-								<%= f.label :ride_height_r, 'Rear Ride Height Adjustment (mm)' %><br />
-								<%= f.text_field :ride_height_r, :size => 4 %>
-							</div>
-						</td>
-						<td>
-							<div class="field">
-								<%= f.label :spring_rate_r, 'Rear Spring Rate (kgf/mm)' %><br />
-								<%= f.text_field :spring_rate_r, :size => 4 %>
-							</div>
-						</td>
-						<td>
-							<div class="field">
-								<%= f.label :dampners_ext_r, 'Rear Dampers (Extension)' %><br />
-								<%= f.text_field :dampners_ext_r, :size => 4 %>
-							</div>
-						</td>
-						<td>
-							<div class="field">
-								<%= f.label :dampners_comp_r, 'Rear Dampers (Compression)' %><br />
-								<%= f.text_field :dampners_comp_r, :size => 4 %>
-							</div>
-						</td>
-						<td>
-							<div class="field">
-								<%= f.label :anti_roll_bar_r, 'Rear Anti-Roll Bars' %><br />
-								<%= f.text_field :anti_roll_bar_r, :size => 4 %>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</tr>
-			<tr>
-				<tbody>
-					<tr>
-						<th><h4>Wheel Alignment</h4></th>
-					</tr>
-					<tr>
-						<td>
-							<div class="field">
-								<%= f.label :camber_f, 'Front Camber Angle' %><br />
-								<%= f.text_field :camber_f, :size => 4 %>
-							</div>
-						</td>
-						<td>
-							<div class="field">
-								<%= f.label :toe_f, 'Front Toe Angle' %><br />
-								<%= f.text_field :toe_f, :size => 4 %>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="field">
-								<%= f.label :camber_r, 'Rear Camber Angle' %><br />
-								<%= f.text_field :camber_r, :size => 4 %>
-							</div>
-						</td>
-						<td>
-							<div class="field">
-								<%= f.label :toe_r, 'Rear Toe Angle' %><br />
-								<%= f.text_field :toe_r, :size => 4 %>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</tr>
-		</table>
-	</div>
 <% end %>
+
 <script>
 
 function toggle_settings_for_input (input_id) {
@@ -322,10 +55,8 @@ function toggle_settings_for_input (input_id) {
 			if ($(this).attr('checked')) num_checked++;
 		});
 		
-		if (num_checked) {
-			move_settings(rel, input_id)
-			$(rel).show();
-		} else $(rel).hide();
+		if (num_checked) $(rel).show();
+		else $(rel).hide();
 	}
 }
 
@@ -335,21 +66,12 @@ function toggle_settings_for_select (select_id) {
 	selected_option = $(select_id).find('option[value='+select_value+']').first();
 	
 	if (selected_option.attr('rel')) {
-		move_settings(selected_option.attr('rel'), select_id)
 		$(selected_option.attr('rel')).show();
 	}
 	else if (select_has_rel_option) {
 		$(select_id).find('option[rel]').each(function() {
 			$($(this).attr('rel')).hide();
 		});
-	}
-}
-
-function move_settings (rel, part_id) {
-	var settings_div = $(rel);
-	if ($(part_id).parent('div') != settings_div) {
-		$(rel).remove();
-		$(part_id).parent('div').append(settings_div);
 	}
 }
 

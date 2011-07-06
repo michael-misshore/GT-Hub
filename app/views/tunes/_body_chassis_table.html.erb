@@ -1,0 +1,38 @@
+<div id="body_chassis_table" style="display: none;">
+ 	<table cellspacing="10px">
+		<tr>
+			<th><h3>Aero</h3></th>
+		</tr>
+		<tr>
+			<td>
+				<div class="field">
+					<%= f.label :downforce_f, 'Front Downforce' %><br />
+					<%= f.text_field :downforce_f, :size => 3 %>
+				</div>
+			</td>
+			<td>
+				<div class="field">
+					<%= f.label :downforce_r, 'Rear Downforce' %><br />
+					<%= f.text_field :downforce_r, :size => 3 %>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th><h4>Weight Adjustment</h4></th>
+		</tr>
+		<tr>
+			<td>
+				<div class="field">
+					<%= f.label :ballast_amount, 'Ballast Amount(kg)' %><br />
+					<%= f.text_field :ballast_amount, :size => 3 %>
+				</div>
+			</td>
+			<td>
+				<div class="field">
+					<%= f.label :ballast_position, 'Ballast Position' %><br />
+					<%= f.text_field :ballast_position, :size => 3 %>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>

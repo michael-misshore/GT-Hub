@@ -1,0 +1,27 @@
+<% groups.each do | group, subgroups | %>
+	<div id="<%= group.downcase.gsub(/(\s|\/)/, "_") %>">
+		
+		<% subgroups.each do | subgroup, select_classes | %>
+			<h2><%= subgroup %></h2>
+			<% select_classes.each do | select_class, parts | %>
+				<% if select_class.empty? %>
+					<% parts.each do | part | %>
+						<% options = get_part_form_options(part) %>
+						<div class="field">
+							<b><%= label_tag(options[:id], part.name) %></b><br />
+							<%= check_box_tag("tune[part_ids][]", part.id, tune.part_ids.include?(part.id), options) %>
+						</div><br />
+						<%= render(:partial => part.settings_div_id, :locals => { :f => f }) unless part.settings_div_id.empty? %>
+					<% end %>
+				<% else %>
+					<div class="field">
+						<b><%= label_tag(select_class) %></b><br>
+						<%= select_tag("tune[part_ids][]", get_part_options_html(parts, tune.part_ids), get_part_form_options(parts.first)) %>
+					</div><br />
+					<%= render(:partial => parts.last.settings_div_id, :locals => { :f => f }) unless parts.last.settings_div_id.empty? %>
+				<% end  %>
+			<% end  %>
+		<% end %>
+		
+	</div>
+<% end %>

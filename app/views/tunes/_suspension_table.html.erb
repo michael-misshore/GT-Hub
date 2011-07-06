@@ -1,0 +1,107 @@
+<div id="suspension_table" style="display: none;">
+	<table cellspacing="10px">
+		<tr>
+			<tbody>
+				<tr>
+					<td>
+						<div class="field">
+							<%= f.label :ride_height_f, 'Front Ride Height Adjustment (mm)' %><br />
+							<%= f.text_field :ride_height_f, :size => 4 %>
+						</div>
+					</td>
+					<td>
+						<div class="field">
+							<%= f.label :spring_rate_f, 'Front Spring Rate (kgf/mm)' %><br />
+							<%= f.text_field :spring_rate_f, :size => 4 %>
+						</div>
+					</td>
+					<td>
+						<div class="field">
+							<%= f.label :dampners_ext_f, 'Front Dampers (Extension)' %><br />
+							<%= f.text_field :dampners_ext_f, :size => 4 %>
+						</div>
+					</td>
+					<td>
+						<div class="field">
+							<%= f.label :dampners_comp_f, 'Front Dampers (Compression)' %><br />
+							<%= f.text_field :dampners_comp_f, :size => 4 %>
+						</div>
+					</td>
+					<td>
+						<div class="field">
+							<%= f.label :anti_roll_bar_f, 'Front Anti-Roll Bars' %><br />
+							<%= f.text_field :anti_roll_bar_f, :size => 4 %>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="field">
+							<%= f.label :ride_height_r, 'Rear Ride Height Adjustment (mm)' %><br />
+							<%= f.text_field :ride_height_r, :size => 4 %>
+						</div>
+					</td>
+					<td>
+						<div class="field">
+							<%= f.label :spring_rate_r, 'Rear Spring Rate (kgf/mm)' %><br />
+							<%= f.text_field :spring_rate_r, :size => 4 %>
+						</div>
+					</td>
+					<td>
+						<div class="field">
+							<%= f.label :dampners_ext_r, 'Rear Dampers (Extension)' %><br />
+							<%= f.text_field :dampners_ext_r, :size => 4 %>
+						</div>
+					</td>
+					<td>
+						<div class="field">
+							<%= f.label :dampners_comp_r, 'Rear Dampers (Compression)' %><br />
+							<%= f.text_field :dampners_comp_r, :size => 4 %>
+						</div>
+					</td>
+					<td>
+						<div class="field">
+							<%= f.label :anti_roll_bar_r, 'Rear Anti-Roll Bars' %><br />
+							<%= f.text_field :anti_roll_bar_r, :size => 4 %>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</tr>
+		<tr>
+			<tbody>
+				<tr>
+					<th><h4>Wheel Alignment</h4></th>
+				</tr>
+				<tr>
+					<td>
+						<div class="field">
+							<%= f.label :camber_f, 'Front Camber Angle' %><br />
+							<%= f.text_field :camber_f, :size => 4 %>
+						</div>
+					</td>
+					<td>
+						<div class="field">
+							<%= f.label :toe_f, 'Front Toe Angle' %><br />
+							<%= f.text_field :toe_f, :size => 4 %>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="field">
+							<%= f.label :camber_r, 'Rear Camber Angle' %><br />
+							<%= f.text_field :camber_r, :size => 4 %>
+						</div>
+					</td>
+					<td>
+						<div class="field">
+							<%= f.label :toe_r, 'Rear Toe Angle' %><br />
+							<%= f.text_field :toe_r, :size => 4 %>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</tr>
+	</table>
+</div>
