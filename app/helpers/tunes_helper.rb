@@ -2,7 +2,7 @@ module TunesHelper
   
   # Returns the 'options' for a part's select box
   def get_part_options_html (parts, selected_parts)
-    html = ''
+    html = '<option value=""> - Select a Part - </option>'
     parts.each do |part|
       rel = (part.settings_div_id.empty?) ? '' : " rel=\"##{part.settings_div_id}\""
       selected = (selected_parts.include?(part.id)) ? ' selected="selected"' : ''
