@@ -3,8 +3,10 @@ class TunesController < ApplicationController
   before_filter :authenticate_tuner!, :except => [:index, :show]
 
   def index
+    params['filter'] = {} unless params['filter']
+    
     @title = 'Tune Database'
-    @tunes = Tune.all
+    @tunes = Tune.search(params).all
     
     respond_to do |format|
       format.html # index.html.erb
@@ -24,8 +26,8 @@ class TunesController < ApplicationController
   end
 
   def new
-    @tune = Tune.new
     @title = 'Create Tune'
+    @tune = Tune.new
     @groups = Part.get_groups_hash()
 
     respond_to do |format|
@@ -43,7 +45,9 @@ class TunesController < ApplicationController
   # POST /tunes
   # POST /tunes.xml
   def create
+    @title = 'Create Tune'
     @tune = Tune.new(params[:tune])
+    @groups = Part.get_groups_hash()
 
     respond_to do |format|
       if @tune.save
@@ -59,7 +63,9 @@ class TunesController < ApplicationController
   # PUT /tunes/1
   # PUT /tunes/1.xml
   def update
+    @title = 'Edit Tune'
     @tune = Tune.find(params[:id])
+    @groups = Part.get_groups_hash()
 
     respond_to do |format|
       if @tune.update_attributes(params[:tune])

@@ -8,6 +8,7 @@ describe "tunes/show.html.erb" do
     sign_in @tuner
     
     @tune = assign(:tune, Factory(:tune))
+    @groups = {}
   end
 
   it "renders attributes in <p>" do

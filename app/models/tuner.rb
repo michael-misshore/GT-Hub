@@ -1,5 +1,6 @@
 class Tuner < ActiveRecord::Base
   belongs_to :group
+  has_many :tunes
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable

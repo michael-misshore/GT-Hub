@@ -48,5 +48,9 @@ class Car < ActiveRecord::Base
       end
     }
   end
+  
+  def self.get_years_by_make (make)
+    Car.select('DISTINCT(year) as year').where('make = ?', make)
+  end
 
 end

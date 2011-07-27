@@ -24,13 +24,13 @@ class Part < ActiveRecord::Base
 
   def self.get_groups_hash
     groups = {}
-    all.group_by(&:group).each do |group, parts|
+    order('`group`').all.group_by(&:group).each do |group, parts|
       subgroups = {}
       parts.group_by(&:subgroup).each do |subgroup, parts|
         subgroups[subgroup] = parts.group_by(&:select_class)
       end
-      groups[group] = subgroups
+      groups[group] = subgroups.sort
     end
-    groups
+    groups.sort
   end
 end

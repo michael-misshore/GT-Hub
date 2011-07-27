@@ -11,6 +11,9 @@ describe "tunes/index.html.erb" do
       Factory(:tune),
       Factory(:tune)
     ])
+    
+    view.stub!(:params).and_return({'filter' => {'car' => {}}})
+    assign(:car_makes, [])
   end
 
   it "renders a list of tunes" do

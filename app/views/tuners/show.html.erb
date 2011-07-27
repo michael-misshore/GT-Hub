@@ -31,11 +31,11 @@
 		<b>Total Karma:</b>
 		<span id="total_karma"><%= @tuner.total_karma %></span>
 	</p>
+	<%= link_to 'Edit Account', edit_tuner_path %><br />
 </div>
 
 <br />
 
 <h1>Tunes</h1>
+<%= render 'tunes/filters', :locals => { :form_uri => tuner_path } %>
 <%= render 'tunes/listing' %><br />
-
-<%= link_to 'Edit Account', edit_tuner_path %><br />

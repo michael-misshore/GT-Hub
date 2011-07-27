@@ -1,12 +1,14 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
+gem 'rails', '3.0.7'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
-gem 'mysql2'
+# gem 'mysql2'
+gem 'mysql2', "= 0.2.11"
 gem 'devise'
 gem 'factory_girl_rails'
 gem "jquery-rails"
+gem "rake", "0.8.7"
 
 group :development, :test do
   gem "rspec-rails", ">= 2.6.0"
@@ -20,8 +22,8 @@ end
 # gem 'capistrano'
 
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
-gem 'ruby-debug'
-# gem 'ruby-debug19'
+# gem 'ruby-debug'
+gem 'ruby-debug19'
 
 # Bundle the extra gems:
 # gem 'bj'
