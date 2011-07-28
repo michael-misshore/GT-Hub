@@ -62,7 +62,7 @@ class Tune < ActiveRecord::Base
   
   def self.search (params)
     params['filter'].inject(joins(:car)) do |combined_scope, (column, value)|
-      value.present? ? combined_scope.where("#{column.gsub('_', '.')} = ?", value) : combined_scope
+      value.present? ? combined_scope.where("#{column.gsub(/^cars\_/, 'cars.')} = ?", value) : combined_scope
     end
   end
 end 

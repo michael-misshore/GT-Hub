@@ -12,7 +12,7 @@ describe "tunes/index.html.erb" do
       Factory(:tune)
     ])
     
-    view.stub!(:params).and_return({'filter' => {'car' => {}}})
+    view.stub!(:params).and_return({'filter' => {}})
     assign(:car_makes, [])
   end
 

@@ -3,7 +3,7 @@ class TunesController < ApplicationController
   before_filter :authenticate_tuner!, :except => [:index, :show]
 
   def index
-    params['filter'] = {} unless params['filter']
+    params['filter'] ||= {}
     
     @title = 'Tune Database'
     @tunes = Tune.search(params).all

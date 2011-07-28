@@ -22,6 +22,9 @@ describe Tune do
   it "filters by a handful of fields" do
     params = {'filter' => {}}
     Tune.search(params).all.should eq([@tune])
+    
+    params['filter'] = { 'cars_id' => @tune.id, 'cars_make' => @tune.car.make, 'cars_year' => @tune.car.year, 'track_id' => @tune.track_id, 'tune_type' => @tune.tune_type }
+    Tune.search(params).all.should eq([@tune])
   end
   
 end

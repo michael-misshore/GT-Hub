@@ -12,7 +12,7 @@ class TunersController < ApplicationController
   end
   
   def show
-    params['filter'] = {} unless params['filter']
+    params['filter'] ||= {}
     
     @tuner = Tuner.find_by_param(params[:id])
     @title = "#{@tuner.tuner_name}'s Garage"
