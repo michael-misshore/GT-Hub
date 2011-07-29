@@ -50,6 +50,8 @@ class Tune < ActiveRecord::Base
   
   before_create :add_karma_point
   
+  paginates_per 25
+  
   def karma 
     karma_points.inject(0) {|sum, k| sum + k.karma }
   end

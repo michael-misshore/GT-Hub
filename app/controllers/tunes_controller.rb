@@ -6,7 +6,7 @@ class TunesController < ApplicationController
     params['filter'] ||= {}
     
     @title = 'Tune Database'
-    @tunes = Tune.search(params).all
+    @tunes = Tune.search(params).page params[:page]
     
     respond_to do |format|
       format.html # index.html.erb

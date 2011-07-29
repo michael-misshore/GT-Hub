@@ -9,6 +9,7 @@ gem 'devise'
 gem 'factory_girl_rails'
 gem "jquery-rails"
 gem "rake", "0.8.7"
+gem 'kaminari'
 
 group :development, :test do
   gem "rspec-rails", ">= 2.6.0"

@@ -13,7 +13,7 @@ describe "tunes/index.html.erb" do
     ])
     
     view.stub!(:params).and_return({'filter' => {}})
-    assign(:car_makes, [])
+    view.stub(:paginate)
   end
 
   it "renders a list of tunes" do

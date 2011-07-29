@@ -16,7 +16,7 @@ class TunersController < ApplicationController
     
     @tuner = Tuner.find_by_param(params[:id])
     @title = "#{@tuner.tuner_name}'s Garage"
-    @tunes = @tuner.tunes.search(params)
+    @tunes = @tuner.tunes.search(params).page params[:page]
     
     respond_to do |format|
       format.html # show.html.erb

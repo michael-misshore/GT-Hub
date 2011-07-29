@@ -19,7 +19,7 @@ describe TunesController do
 
   describe "GET index" do
     it "assigns all tunes as @tunes" do
-      Tune.stub_chain(:search, :all) { [mock_tune] }
+      Tune.stub_chain(:search, :page) { [mock_tune] }
       get :index
       assigns(:tunes).should eq([mock_tune])
     end
