@@ -27,7 +27,7 @@ describe TunesController do
 
   describe "GET show" do
     it "assigns the requested tune as @tune" do
-      Tune.stub(:find).with("37") { mock_tune }
+      Tune.stub_chain(:included, :find).with("37") { mock_tune }
       get :show, :id => "37"
       assigns(:tune).should be(mock_tune)
     end

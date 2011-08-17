@@ -19,4 +19,10 @@ module TunesHelper
 		options
   end
   
+  def listing_header (name, value, title = nil)
+    title ||= ucwords(name)
+    html = hidden_field_tag("order_by[#{name}]", value, {:class => 'order_by'})
+    html << link_to("#{title} #{value}", '#', {:onclick => "order_tunes('#order_by_#{name}');"})
+  end
+  
 end

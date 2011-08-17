@@ -1,10 +1,10 @@
 <table>
 	<tr>
 		<th></th>
-		<th>Karma</th>
-		<th>Type</th>
-		<th>Car</th>
-		<th>Track</th>
+		<th><%= listing_header('karma', params['order_by']['karma']) %></th>
+		<th><%= listing_header('tune_type', params['order_by']['tune_type'], 'Tune Type') %></th>
+		<th><%= listing_header('car', params['order_by']['car']) %></th>
+		<th><%= listing_header('track', params['order_by']['track']) %></th>
 		<th>Tuner</th>
 		<th></th>
 		<th></th>
@@ -64,5 +64,12 @@ function add_karam_point(tune_id, point) {
 			$('#total_karma').html(data.total_karma)
 		}
 	}, 'json');
+}
+
+function order_tunes(id) {
+	direction = ($(id).val() == 'ASC') ? 'DESC' : 'ASC';
+	$('.order_by').val('');
+	$(id).val(direction);
+	$('form').submit();
 }
 </script>

@@ -50,9 +50,16 @@ class Tune < ActiveRecord::Base
   
   before_create :add_karma_point
   
+  scope :karma, lambda { 
+    select('tunes.*, kp.karma').
+    joins('LEFT JOIN (SELECT CAST(SUM(karma) AS SIGNED) AS karma, tune_id FROM karma_points GROUP BY tune_id) AS kp ON kp.tune_id = tunes.id')
+  }
+  scope :included, karma
+  
   paginates_per 25
   
-  def karma 
+  # For use with the Ajax call that updates the sum of karma. Should this go back to the database?
+  def karma_sum
     karma_points.inject(0) {|sum, k| sum + k.karma }
   end
   
@@ -63,8 +70,21 @@ class Tune < ActiveRecord::Base
   end
   
   def self.search (params)
-    params['filter'].inject(joins(:car)) do |combined_scope, (column, value)|
-      value.present? ? combined_scope.where("#{column.gsub(/^cars\_/, 'cars.')} = ?", value) : combined_scope
+    search_scope = joins(:car).karma
+    params['filter'].inject(search_scope) do |combined_scope, (column, value)|
+      search_scope = value.present? ? combined_scope.where("#{column.gsub(/^cars\_/, 'cars.')} = ?", value) : combined_scope
+    end
+
+    params['order_by'].inject(search_scope.joins(:track)) do |combined_scope, (column, value)|
+      if value.empty? 
+        combined_scope
+      elsif column == 'car'
+        combined_scope.order("cars.make #{value}, cars.year #{value}, cars.model #{value}")
+      elsif column == 'track'
+        combined_scope.order("tracks.name #{value}")
+      else
+        combined_scope.order("#{column} #{value}")
+      end
     end
   end
 end 

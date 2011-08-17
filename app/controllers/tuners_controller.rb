@@ -13,6 +13,7 @@ class TunersController < ApplicationController
   
   def show
     params['filter'] ||= {}
+    params['order_by'] ||= {}
     
     @tuner = Tuner.find_by_param(params[:id])
     @title = "#{@tuner.tuner_name}'s Garage"

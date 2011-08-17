@@ -4,6 +4,7 @@ class TunesController < ApplicationController
 
   def index
     params['filter'] ||= {}
+    params['order_by'] ||= {}
     
     @title = 'Tune Database'
     @tunes = Tune.search(params).page params[:page]
@@ -16,7 +17,7 @@ class TunesController < ApplicationController
 
   def show
     @title = 'View Tune'
-    @tune = Tune.find(params[:id])
+    @tune = Tune.included.find(params[:id])
     @groups = Part.get_groups_hash()
 
     respond_to do |format|
@@ -94,8 +95,9 @@ class TunesController < ApplicationController
   def add_karma_point
     @tune = Tune.find(params[:id])
     @tune.add_karma_point params[:point]
+
     respond_to do |format|
-      format.json  { render :json => { :total_karma => current_tuner.total_karma, :tune_karma => @tune.karma }, :content_type => "text/html" }
+      format.json  { render :json => { :total_karma => current_tuner.total_karma, :tune_karma => @tune.karma_sum }, :content_type => "text/html" }
     end
   end
 end

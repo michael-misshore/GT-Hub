@@ -7,12 +7,11 @@ describe "tunes/index.html.erb" do
     @tuner = Factory.create(:tuner)
     sign_in @tuner
     
-    assign(:tunes, [
-      Factory(:tune),
-      Factory(:tune)
-    ])
+    @tune = Factory(:tune)
+    @tune.stub(:karma).and_return("1")
+    assign(:tunes, [@tune, @tune])
     
-    view.stub!(:params).and_return({'filter' => {}})
+    view.stub!(:params).and_return({'filter' => {}, 'order_by' => {}})
     view.stub(:paginate)
   end
 

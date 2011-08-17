@@ -8,4 +8,7 @@ module ApplicationHelper
     date.strftime("%B %d, %Y")
   end
   
+  def ucwords(str)
+    str.split(' ').select {|w| w.capitalize! || w }.join(' ')
+  end
 end

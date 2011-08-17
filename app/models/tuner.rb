@@ -27,7 +27,7 @@ class Tuner < ActiveRecord::Base
   def total_karma(tuner_id = nil)
     tuner_id = self.id if (tuner_id.nil?)
     k = KarmaPoint.select("SUM(karma) AS karma").where("tuner_id = ?", tuner_id).group("tuner_id").first
-    (k.nil?) ? '0' : k.karma
+    (k.nil?) ? 0 : k.karma
   end
   
 protected

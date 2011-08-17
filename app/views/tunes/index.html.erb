@@ -1,2 +1,6 @@
-<%= render 'filters', :locals => { :form_uri => tunes_path }%>
-<%= render 'listing' %>
+<%= form_tag(tunes_path, :method => "get") do %>
+
+	<%= render 'filters', :locals => { :form_uri => tunes_path }%>
+	<%= render 'listing' %>
+	
+<% end %>

@@ -8,6 +8,8 @@ describe "tunes/show.html.erb" do
     sign_in @tuner
     
     @tune = assign(:tune, Factory(:tune))
+    @tune.stub(:karma).and_return("1")
+    
     @groups = {}
   end
 
