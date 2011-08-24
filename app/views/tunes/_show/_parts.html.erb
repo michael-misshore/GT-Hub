@@ -2,7 +2,13 @@
 	<div id="<%= group.downcase.gsub(/(\s|\/)/, "_") %>">
 		
 		<% subgroups.each do | subgroup, select_classes | %>
+			<%= render(:partial => "tunes/_show/brakes_table", :locals => { :tune => tune }) if subgroup == 'Suspension' %>
+			
 			<h2><%= subgroup %></h2>
+			
+			<%= render(:partial => "tunes/_show/body_chassis_table", :locals => { :tune => tune }) if subgroup == 'Aero' %>
+			<%= render(:partial => "tunes/_show/engine_table", :locals => { :tune => tune }) if subgroup == 'Engine Tuning' %>
+			
 			<% select_classes.each do | select_class, parts | %>
 				<% no_parts_installed = true %>
 				<% parts.each do | part | %>
@@ -14,11 +20,11 @@
 						<%= render(:partial => "tunes/_show/#{part.settings_div_id}", :locals => { :tune => tune }) if (tune.part_ids.include?(part.id) && !part.settings_div_id.empty?) %>
 					<% elsif select_class.empty? %>
 						<div class="field">
-							<b><%= part.name %>: </b>Not Installed
+							<b><%= part.name %>: </b>Stock
 						</div><br />
 					<% elsif !select_class.empty? && no_parts_installed && part == parts.last %>
 						<div class="field">
-							<b><%= (subgroup.empty?) ? select_class.gsub('_', ' ').split(' ').select {|w| w.capitalize! || w }.join(' ') : subgroup %>: </b>Not Installed
+							<b><%= ucwords(select_class.gsub('_',' ')) %>: </b>Stock
 						</div><br />
 					<% end %>
 				<% end %>

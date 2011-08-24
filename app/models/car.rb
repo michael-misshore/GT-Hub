@@ -7,7 +7,7 @@ class Car < ActiveRecord::Base
     elsif
       type = premium ? 'P' : 'S'
     end
-    "#{year} #{make} #{model} (#{type})"
+    "#{make} #{year} #{model} (#{type})"
   end
   
   def self.import

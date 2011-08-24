@@ -7,6 +7,12 @@ class Tune < ActiveRecord::Base
   
   validates_associated :car, :tuner
   validates_inclusion_of :tune_type, :in => %w(Grip Drift Drag)
+  validates_inclusion_of :transmission_type, :in => %w(Manual Automatic)
+  validates_numericality_of :performance_points, :only_integer => true, :allow_blank => true
+  validates_numericality_of :horsepower, :only_integer => true, :allow_blank => true
+  validates_numericality_of :torque, :only_integer => true, :allow_blank => true
+  validates_numericality_of :weight, :only_integer => true, :allow_blank => true
+  validates_numericality_of :traction_control, :only_integer => true, :allow_blank => true
   validates_numericality_of :downforce_f, :only_integer => true, :allow_blank => true
   validates_numericality_of :downforce_r, :only_integer => true, :allow_blank => true
   validates_numericality_of :ballast_amount, :only_integer => true, :allow_blank => true

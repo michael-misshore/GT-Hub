@@ -25,4 +25,18 @@ module TunesHelper
     html << link_to("#{title} #{value}", '#', {:onclick => "order_tunes('#order_by_#{name}');"})
   end
   
+  def display_setting(setting)
+    setting.nil? ? 'Default' : setting
+  end
+  
+  def display_basic_info(basic_info)
+    if basic_info.nil?
+      'None Specified'
+    elsif basic_info === false || basic_info === 0
+      'Off'
+    else
+      basic_info
+    end
+  end
+  
 end

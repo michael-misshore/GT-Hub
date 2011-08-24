@@ -2,7 +2,13 @@
 	<div id="<%= group.downcase.gsub(/(\s|\/)/, "_") %>">
 		
 		<% subgroups.each do | subgroup, select_classes | %>
+			<%= render(:partial => "tunes/_form/brakes_table", :locals => { :f => f }) if subgroup == 'Suspension' %>
+			
 			<h2><%= subgroup %></h2>
+			
+			<%= render(:partial => "tunes/_form/body_chassis_table", :locals => { :f => f }) if subgroup == 'Aero' %>
+			<%= render(:partial => "tunes/_form/engine_table", :locals => { :f => f }) if subgroup == 'Engine Tuning' %>
+			
 			<% select_classes.each do | select_class, parts | %>
 				<% if select_class.empty? %>
 					<% parts.each do | part | %>
@@ -15,7 +21,7 @@
 					<% end %>
 				<% else %>
 					<div class="field">
-						<b><%= label_tag(select_class) %></b><br>
+						<b><%= label_tag(select_class, ucwords(select_class.gsub('_',' '))) %></b><br>
 						<%= select_tag("tune[part_ids][]", get_part_options_html(parts, tune.part_ids), get_part_form_options(parts.first)) %>
 					</div><br />
 					<%= render(:partial => "tunes/_form/#{parts.last.settings_div_id}", :locals => { :f => f }) unless parts.last.settings_div_id.empty? %>

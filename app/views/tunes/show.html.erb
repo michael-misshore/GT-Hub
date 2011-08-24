@@ -9,24 +9,104 @@
 	</ul>
 	
 	
+	
 	<div id="basic_info">
-		<h2><%= @tune.car.display_name %> Tune</h2>
+		<h2>General Settings - <%= @tune.car.display_name %></h2>
 		<p><h3><b>Tuner:</b> <%= @tune.tuner.tuner_name %></h3></p>
-
-		<p>
-		  <b>Karma:</b>
-		  <%= @tune.karma %>
-		</p>
-
-		<p>
-		  <b>Track:</b>
-		  <%= @tune.track.name %>
-		</p>
-
-		<p>
-		  <b>Type:</b>
-		  <%= @tune.tune_type %>
-		</p>
+		<table width="700" cellspacing="10px">
+			<tr>
+				<td>
+					<div class="field">
+						<b>Track</b><br />
+						<%= @tune.track.name %>
+					</div>
+				</td>
+				<td>
+					<div class="field">
+						<b>Performance Points</b><br />
+						<%= display_basic_info(@tune.performance_points) %>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="field">
+						<b>Tune Type</b><br />
+						<%= display_basic_info(@tune.tune_type) %>
+					</div>
+				</td>
+				<td>
+					<div class="field">
+						<b>Weight</b><br />
+						<%= display_basic_info(@tune.weight) %>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="field">
+						<b>Horsepower</b><br />
+						<%= display_basic_info(@tune.horsepower) %>
+					</div>
+				</td>
+				<td>
+					<div class="field">
+						<b>Torque</b><br />
+						<%= display_basic_info(@tune.torque) %>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="field">
+						<b>Transmission Type</b><br />
+						<%= display_basic_info(@tune.transmission_type) %>
+					</div>
+				</td>
+				<td>
+					<div class="field">
+						<b>Traction Control</b><br />
+						<%= display_basic_info(@tune.traction_control) %>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="field">
+						<b>ABS</b><br />
+						<%= display_basic_info(@tune.abs) %>
+					</div>
+				</td>
+				<td>
+					<div class="field">
+						<b>Skid Recovery</b><br />
+						<%= display_basic_info(@tune.skid_recovery) %>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="field">
+						<b>Active Steering</b><br />
+						<%= display_basic_info(@tune.active_steering) %>
+					</div>
+				</td>
+				<td>
+					<div class="field">
+						<b>Active Stability Management (ASM)</b><br />
+						<%= display_basic_info(@tune.asm) %>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<div class="field">
+						<b>Tuner Comments</b><br />
+						<%= display_basic_info(@tune.comments) %>
+					</div>
+				</td>
+			</tr>
+		</table>
 	</div>
 	
 	<%= render :partial => 'tunes/_show/parts', :locals => { :groups => @groups, :tune => @tune } %>

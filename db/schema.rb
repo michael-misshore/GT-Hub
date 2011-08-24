@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110615012329) do
+ActiveRecord::Schema.define(:version => 20110821170451) do
 
   create_table "cars", :force => true do |t|
     t.datetime "created_at"
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(:version => 20110615012329) do
     t.integer  "car_id"
     t.integer  "tuner_id"
     t.integer  "track_id"
-    t.string   "tune_type",                  :default => "Grip", :null => false
+    t.string   "tune_type",                  :default => "Grip",   :null => false
     t.integer  "downforce_f"
     t.integer  "downforce_r"
     t.integer  "ballast_amount"
@@ -129,6 +129,21 @@ ActiveRecord::Schema.define(:version => 20110615012329) do
     t.integer  "brake_balance_f"
     t.integer  "brake_balance_r"
     t.integer  "abs"
+    t.integer  "performance_points"
+    t.integer  "horsepower"
+    t.integer  "torque"
+    t.integer  "weight"
+    t.text     "comments"
+    t.string   "transmission_type",          :default => "Manual"
+    t.integer  "traction_control"
+    t.boolean  "skid_recovery",              :default => false
+    t.boolean  "active_steering",            :default => false
+    t.boolean  "asm",                        :default => false
   end
+
+  add_index "tunes", ["car_id"], :name => "index_tunes_on_car_id"
+  add_index "tunes", ["track_id"], :name => "index_tunes_on_track_id"
+  add_index "tunes", ["tune_type"], :name => "index_tunes_on_tune_type"
+  add_index "tunes", ["tuner_id"], :name => "index_tunes_on_tuner_id"
 
 end

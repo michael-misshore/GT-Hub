@@ -1,4 +1,5 @@
 ==Body/Chassis==
+===Chassis===
 Weight Reduction Stage 1,weight_reduction,
 Weight Reduction Stage 2,weight_reduction,
 Weight Reduction Stage 3,weight_reduction,
@@ -6,32 +7,47 @@ Chassis Reinforcement,,
 Window Weight Reduction,,
 Carbon Hood,,
 ===Aero===
-Front Aero,,body_chassis_table
-Spoiler,,body_chassis_table
+Type A,front,
+Type B,front,
+Type C,front,
+Type D,front,
+Type A,rear,
+Type B,rear,
+Type C,rear,
+Type D,rear,
+Type A,ext,
+Type B,ext,
+Type C,ext,
+Type D,ext,
+Type A,wing,
+Type B,wing,
+Type C,wing,
+Type D,wing,
 
 ==Engine==
 ===Intake System===
 Sports Intake Manifold,,
-Racing Filter,intake,
-Sports Air Filter,intake,
+Racing Filter,intake_filter,
+Sports Air Filter,intake_filter,
 ===Exhaust===
 Sports Exhaust,exhaust,
-Titanium Semi-Racing Exhaust,exhaust,
-Titanium Racing Exhaust,exhaust,
+Titanium Semi-Racing Exhaust,exhaust_system,
+Titanium Racing Exhaust,exhaust_system,
 Sports Exhaust Manifold,,
 Catalytic Converter: Sports,,
 ===Forced Induction===
-Low RPM Range Turbo Kit,force_induction,
-Mid RPM Range Turbo Kit,force_induction,
-High RPM Range Turbo Kit,force_induction,
+Low RPM Range Turbo Kit,forced_induction,
+Mid RPM Range Turbo Kit,forced_induction,
+High RPM Range Turbo Kit,forced_induction,
 Supercharger,force_induction,
 ===Engine Tuning===
-Engine Tuning Stage 1,engine_tuning,engine_table
-Engine Tuning Stage 2,engine_tuning,engine_table
-Engine Tuning Stage 3,engine_tuning,engine_table
+Engine Tuning Stage 1,engine_tuning,
+Engine Tuning Stage 2,engine_tuning,
+Engine Tuning Stage 3,engine_tuning,
 ECU Tuning,,
 
 ==Drivetrain==
+===Drivetrain===
 Single Plate Clutch,clutch,
 Twin Plate Clutch,clutch,
 Semi-Racing Flywheel,flywheel,
@@ -40,31 +56,31 @@ Carbon Drive Shaft,,
 Torque Sensing Center Differential,,
 Adjustable LSD,,lsd_table
 ===Transmission===
-5 speed Close-Ratio Transmission,tranny,
-6 speed Close-Ratio Transmission,tranny,
-Fully Customizable Transmission,tranny,transmission_table
+5 speed Close-Ratio Transmission,transmission,
+6 speed Close-Ratio Transmission,transmission,
+Fully Customizable Transmission,transmission,transmission_table
 
 ==Suspension/Tires==
-Fixed Sports Kit,suspension,
-Height-Adjustable Sports Kit,suspension,
-Fully Customizable Kit,suspension,suspension_table
-===Tires - Front===
-Comfort Hard,tires,
-Comfort Medium,tires,
-Comfort Soft,tires,
-Sport Hard,tires,
-Sport Medium,tires,
-Sport Soft,tires,
-Racing Hard,tires,
-Racing Medium,tires,
-Racing Soft,tires,
-===Tires - Rear===
-Comfort Hard,tires,
-Comfort Medium,tires,
-Comfort Soft,tires,
-Sport Hard,tires,
-Sport Medium,tires,
-Sport Soft,tires,
-Racing Hard,tires,
-Racing Medium,tires,
-Racing Soft,tires,
+===Suspension===
+Fixed Sports Kit,suspension_kit,
+Height-Adjustable Sports Kit,suspension_kit,
+Fully Customizable Kit,suspension_table,suspension_table
+===Tires===
+Comfort Hard,front,
+Comfort Medium,front,
+Comfort Soft,front,
+Sport Hard,front,
+Sport Medium,front,
+Sport Soft,front,
+Racing Hard,front,
+Racing Medium,front,
+Racing Soft,front,
+Comfort Hard,rear,
+Comfort Medium,rear,
+Comfort Soft,rear,
+Sport Hard,rear,
+Sport Medium,rear,
+Sport Soft,rear,
+Racing Hard,rear,
+Racing Medium,rear,
+Racing Soft,rear,

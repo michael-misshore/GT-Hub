@@ -1,9 +1,5 @@
 ==Body/Chassis==
 Aero - F/R Downforce
-Aero - Weight Adjusment - Ballast Amount(kg)
-Aero - Weight Adjusment - Ballast Position
-
-Engine - Power Limiter
 
 ==Transmission==
 Fully Customizable Transmission - Gear Ratio - 1st Gear
@@ -30,8 +26,10 @@ Fully Customizable Kit - Suspension - F/R Anti-Roll Bars
 Fully Customizable Kit - Wheel Alignment - F/R Camber Angle
 Fully Customizable Kit - Wheel Alignment - F/R Toe Angle
 
-==Brakes==
-Brake Balance Controller - Brake Balance - F/R Brake Balance
-
 ==Tire==
 Front Rear
+
+Brake Balance Controller - Brake Balance - F/R Brake Balance
+Aero - Weight Adjusment - Ballast Amount(kg)
+Aero - Weight Adjusment - Ballast Position
+Engine - Power Limiter
