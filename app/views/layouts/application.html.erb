@@ -9,17 +9,18 @@
 <body>
 <div id="header">
 	<ul id="header-nav">
-		<li><a href="/">Home</a></li>
-		<li><a href="/tunes">Tune Database</a></li>
+		<li><%= link_to 'Home', root_path %></li>
+		<li><%= link_to 'Tune Database', tunes_path %></li>
 		<% if tuner_signed_in? %>	
 			<li><%= link_to 'Account', tuner_path(current_tuner) %></li>
 			<li><%= link_to 'Logout', destroy_tuner_session_path %></li>
 		<% else %>
 			<li><%= link_to 'Login', new_tuner_session_path %></li>
 		<% end %>
+		<li><%= link_to 'Donate', '' %></li>
 	</ul>
 	<div id="logo">
-		<%= image_tag("logo.png") %>
+		<%= link_to image_tag("logo.png"), root_path %>
 	</div>
 </div>
 <div id="content-wrapper">

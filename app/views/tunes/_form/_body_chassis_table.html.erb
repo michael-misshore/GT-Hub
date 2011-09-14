@@ -1,19 +1,23 @@
-<table cellspacing="10px">
+<table cellspacing="10px" class="tune-settings">
 	<tr>
-		<th><h3>Downforce</h3></th>
+		<th><h4>Downforce</h4></th>
 	</tr>
 	<tr>
 		<td>
-			<div class="field">
-				<%= f.label :downforce_f, 'Front Downforce' %><br />
-				<%= f.text_field :downforce_f, :size => 3 %>
-			</div>
+			<ul>
+				<li>
+					<%= f.label :downforce_f, 'Front Downforce' %>
+					<%= f.text_field :downforce_f, :size => 3 %>
+				</li>
+			</ul>
 		</td>
 		<td>
-			<div class="field">
-				<%= f.label :downforce_r, 'Rear Downforce' %><br />
-				<%= f.text_field :downforce_r, :size => 3 %>
-			</div>
+			<ul>
+				<li>
+					<%= f.label :downforce_r, 'Rear Downforce' %>
+					<%= f.text_field :downforce_r, :size => 3 %>
+				</li>
+			</ul>
 		</td>
 	</tr>
 	<tr>
@@ -21,16 +25,20 @@
 	</tr>
 	<tr>
 		<td>
-			<div class="field">
-				<%= f.label :ballast_amount, 'Ballast Amount(kg)' %><br />
-				<%= f.text_field :ballast_amount, :size => 3 %>
-			</div>
+			<ul>
+				<li>
+					<%= f.label :ballast_amount, 'Ballast Amount(kg)' %>
+					<%= f.text_field :ballast_amount, :size => 3 %>
+				</li>
+			</ul>
 		</td>
 		<td>
-			<div class="field">
-				<%= f.label :ballast_position, 'Ballast Position' %><br />
-				<%= f.text_field :ballast_position, :size => 3 %>
-			</div>
+			<ul>
+				<li>
+					<%= f.label :ballast_position, 'Ballast Position' %>
+					<%= f.text_field :ballast_position, :size => 3 %>
+				</li>
+			</ul>
 		</td>
 	</tr>
 </table>

@@ -7,6 +7,35 @@ body {
 	font-family: helvetica;
 }
 
+h1 {
+	font-size: 40px;
+	font-weight: lighter;
+	letter-spacing: 3px;
+}
+
+h2 {
+	color: #375063;
+	font-size: 28px;
+}
+
+a {
+	text-decoration: none;
+	color: #692a2f;
+}
+
+a:hover {
+	color: #e02425;
+}
+
+label {
+	position: relative;
+	left: -5px;
+}
+
+input[hidden=hidden] {
+	display: none;
+}
+
 
 /* CONTENT ITEMS*/
 #content-wrapper {
@@ -23,7 +52,7 @@ body {
 
 #content-header-text {
 	position: relative;
-	top: -90px;
+	top: -72px;
 	left: 40px;
 	color: white;
 	letter-spacing: 3px;
@@ -55,39 +84,69 @@ body {
 
 #header-nav {
 	float: right;
-	list-style-type:none;
+	font-size: 17px;
+	position: relative;
+	top: 10px;
 }
 
 #header-nav li {
 	display: inline;
+	list-style-type:none; 
+	padding-left:.8em;
+	margin-left:.8em;
+	border-left:1px solid black;
 }
 
-
-/*GENERIC STYLES*/
-h1 {
-	font-size: 40px;
-	font-weight: lighter;
-	letter-spacing: 3px;
-}
-
-h2 {
-	color: #375063;
-	font-size: 28px;
-}
-
-h2, h3, h4 {
-/*	line-height: 1px;*/
-}
-
-a {
+#header-nav a {
+	color: white;
 	text-decoration: none;
-	color: #692a2f;
 }
 
-a:hover {
-	color: #e02425;
+#header-nav li:first-child {
+	border-left:none
 }
+
+/*PARTS TABLES*/
 
 .parts-table td {
 	vertical-align: top;
+}
+
+#tunetabs input {
+	width: 50px !important;
+}
+
+#tunetabs h2 {
+	padding-bottom: 15px;
+}
+
+.tune-settings ul {
+	list-style: none;
+}
+
+.tune-settings ul li {
+	float: left;
+	padding: 5px;
+}
+
+table.tune-settings {
+	width: 65%;
+}
+
+table.tune-settings th {
+	position: relative;
+	top: -10px;
+	left: 10px;
+}
+
+table.tune-settings td {
+	border-bottom: 0;
+}
+
+#transmission_table td {
+	vertical-align: bottom;
+}
+
+#transmission_table ul li {
+	float: none;
 }

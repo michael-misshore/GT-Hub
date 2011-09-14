@@ -1,20 +1,24 @@
 <h2>Brakes</h2>
-<table cellspacing="10px">
+<table cellspacing="10px" class="tune-settings">
 	<tr>
-		<th><h3>Brake Balance Controller</h3></th>
+		<th><h4>Brake Balance Controller</h4></th>
 	</tr>
 	<tr>
 		<td>
-			<div class="field">
-				<b><%= f.label :brake_balance_f, 'Front' %></b><br />
-				<%= f.text_field :brake_balance_f, :size => 3 %>
-			</div>
+			<ul>
+				<li>
+					<b><%= f.label :brake_balance_f, 'Front' %></b>
+					<%= f.text_field :brake_balance_f, :size => 3 %>
+				</li>
+			</ul>
 		</td>
 		<td>
-			<div class="field">
-				<b><%= f.label :brake_balance_r, 'Rear' %></b><br />
-				<%= f.text_field :brake_balance_r, :size => 3 %>
-			</div>
+			<ul>
+				<li>
+					<b><%= f.label :brake_balance_r, 'Rear' %></b>
+					<%= f.text_field :brake_balance_r, :size => 3 %>
+				</li>
+			</ul>
 		</td>
 	</tr>
 </table>

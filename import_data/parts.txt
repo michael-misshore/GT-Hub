@@ -39,7 +39,7 @@ Catalytic Converter: Sports,,
 Low RPM Range Turbo Kit,forced_induction,
 Mid RPM Range Turbo Kit,forced_induction,
 High RPM Range Turbo Kit,forced_induction,
-Supercharger,force_induction,
+Supercharger,forced_induction,
 ===Engine Tuning===
 Engine Tuning Stage 1,engine_tuning,
 Engine Tuning Stage 2,engine_tuning,
@@ -64,7 +64,7 @@ Fully Customizable Transmission,transmission,transmission_table
 ===Suspension===
 Fixed Sports Kit,suspension_kit,
 Height-Adjustable Sports Kit,suspension_kit,
-Fully Customizable Kit,suspension_table,suspension_table
+Fully Customizable Kit,suspension_kit,suspension_table
 ===Tires===
 Comfort Hard,front,
 Comfort Medium,front,

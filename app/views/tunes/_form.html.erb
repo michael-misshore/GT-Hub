@@ -30,13 +30,13 @@
 				<tr>
 					<td>
 						<div class="field">
-							<b><%= f.label :car_id %></b><br />
-							<%= f.collection_select(:car_id, Car.ordered.all, :id, :display_name, {}, {:style => 'width: 200px'}) %>
+							<b><%= f.label :car_id %></b>
+							<%= f.collection_select(:car_id, Car.ordered.all, :id, :display_name, {}, {:style => 'width: 210px'}) %>
 						</div>
 					</td>
 					<td>
 						<div class="field">
-							<b><%= f.label :performance_points, 'Performance Points' %></b><br />
+							<b><%= f.label :performance_points, 'Performance Points' %></b>
 							<%= f.text_field :performance_points %>
 						</div>
 					</td>
@@ -44,13 +44,13 @@
 				<tr>
 					<td>
 						<div class="field">
-							<b><%= f.label :tune_type, 'Tune Type' %></b><br />
+							<b><%= f.label :tune_type, 'Tune Type' %></b>
 							<%= f.select(:tune_type, options_for_select(['Grip', 'Drift', 'Drag'], @tune.tune_type)) %>
 						</div>
 					</td>
 					<td>
 						<div class="field">
-							<b><%= f.label :weight %></b><br />
+							<b><%= f.label :weight %></b>
 							<%= f.text_field :weight %>
 						</div>
 					</td>
@@ -58,13 +58,13 @@
 				<tr>
 					<td>
 						<div class="field">
-							<b><%= f.label :horsepower %></b><br />
+							<b><%= f.label :horsepower %></b>
 							<%= f.text_field :horsepower %>
 						</div>
 					</td>
 					<td>
 						<div class="field">
-							<b><%= f.label :torque %></b><br />
+							<b><%= f.label :torque %></b>
 							<%= f.text_field :torque %>
 						</div>
 					</td>
@@ -72,13 +72,13 @@
 				<tr>
 					<td>
 						<div class="field">
-							<b><%= f.label :transmission_type, 'Transmission Type' %></b><br />
+							<b><%= f.label :transmission_type, 'Transmission Type' %></b>
 							<%= f.select(:transmission_type, options_for_select({'Manual (MT)' => "Manual", 'Automatic (AT)' => 'Automatic'}, @tune.transmission_type)) %>
 						</div>
 					</td>
 					<td>
 						<div class="field">
-							<b><%= f.label :traction_control, 'Traction Control' %></b><br />
+							<b><%= f.label :traction_control, 'Traction Control' %></b>
 							<%= f.select :traction_control, options_for_select(0..10, @tune.traction_control) %>
 						</div>
 					</td>
@@ -86,13 +86,13 @@
 				<tr>
 					<td>
 						<div class="field">
-							<b><%= f.label :abs, 'ABS' %></b><br />
+							<b><%= f.label :abs, 'ABS' %></b>
 							<%= f.select :abs, options_for_select(0..10, @tune.abs) %>
 						</div>
 					</td>
 					<td>
 						<div class="field">
-							<b><%= f.label :skid_recovery, 'Skid Recovery' %></b><br />
+							<b><%= f.label :skid_recovery, 'Skid Recovery' %></b>
 							<%= f.select :skid_recovery, options_for_select({'Off' => 0, 'On' => 1}, @tune.skid_recovery) %>
 						</div>
 					</td>
@@ -100,13 +100,13 @@
 				<tr>
 					<td>
 						<div class="field">
-							<b><%= f.label :active_steering, 'Active Steering' %></b><br />
+							<b><%= f.label :active_steering, 'Active Steering' %></b>
 							<%= f.select :active_steering, options_for_select({'Off' => 0, 'On' => 1}, @tune.active_steering) %>
 						</div>
 					</td>
 					<td>
 						<div class="field">
-							<b><%= f.label :asm, 'Active Stability Management (ASM)' %></b><br />
+							<b><%= f.label :asm, 'Active Stability Management (ASM)' %></b>
 							<%= f.select :asm, options_for_select({'Off' => 0, 'On' => 1}, @tune.asm) %>
 						</div>
 					</td>
@@ -114,7 +114,7 @@
 				<tr>
 					<td colspan="2">
 						<div class="field">
-							<b><%= f.label :track_id %></b><br />
+							<b><%= f.label :track_id %></b>
 							<%= f.collection_select(:track_id, Track.ordered.all, :id, :name) %>
 						</div>
 					</td>
@@ -122,7 +122,7 @@
 				<tr>
 					<td colspan="2">
 						<div class="field">
-							<b><%= f.label :comments, 'Tuner Comments' %></b><br />
+							<b><%= f.label :comments, 'Tuner Comments' %></b>
 							<%= f.text_area :comments, :size => '80x5' %>
 						</div>
 					</td>
