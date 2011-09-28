@@ -1,5 +1,5 @@
 <div id="suspension_table">
-	<table cellspacing="10px">
+	<table cellspacing="10px" class="tune-settings">
 		<tr>
 			<th><h3>Suspension</h3></th>
 		</tr>
@@ -7,66 +7,52 @@
 			<tbody>
 				<tr>
 					<td>
-						<div class="field">
-							<b>Front Ride Height Adjustment (mm):</b>
-							<%= display_setting tune.ride_height_f %>
-						</div>
+						<ul>
+							<li>
+								<b>Front Ride Height Adjustment (mm):</b><br />
+								<%= display_setting tune.ride_height_f %>
+							</li>
+							<li>
+								<b>Front Spring Rate (kgf/mm):</b><br />
+								<%= display_setting tune.spring_rate_f %>
+							</li>
+							<li>
+								<b>Front Dampers (Extension):</b><br />
+								<%= display_setting tune.dampners_ext_f %>
+							</li>
+							<li>
+								<b>Front Dampers (Compression):</b><br />
+								<%= display_setting tune.dampners_comp_f %>
+							</li>
+							<li>
+								<b>Front Anti-Roll Bars:</b><br />
+								<%= display_setting tune.anti_roll_bar_f %>
+							</li>
+						</ul>
 					</td>
 					<td>
-						<div class="field">
-							<b>Front Spring Rate (kgf/mm):</b>
-							<%= display_setting tune.spring_rate_f %>
-						</div>
-					</td>
-					<td>
-						<div class="field">
-							<b>Front Dampers (Extension):</b>
-							<%= display_setting tune.dampners_ext_f %>
-						</div>
-					</td>
-					<td>
-						<div class="field">
-							<b>Front Dampers (Compression):</b>
-							<%= display_setting tune.dampners_comp_f %>
-						</div>
-					</td>
-					<td>
-						<div class="field">
-							<b>Front Anti-Roll Bars:</b>
-							<%= display_setting tune.anti_roll_bar_f %>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="field">
-							<b>Rear Ride Height Adjustment (mm):</b>
-							<%= display_setting tune.ride_height_r %>
-						</div>
-					</td>
-					<td>
-						<div class="field">
-							<b>Rear Spring Rate (kgf/mm):</b>
-							<%= display_setting tune.spring_rate_r %>
-						</div>
-					</td>
-					<td>
-						<div class="field">
-							<b>Rear Dampers (Extension):</b>
-							<%= display_setting tune.dampners_ext_r %>
-						</div>
-					</td>
-					<td>
-						<div class="field">
-							<b>Rear Dampers (Compression):</b>
-							<%= display_setting tune.dampners_comp_r %>
-						</div>
-					</td>
-					<td>
-						<div class="field">
-							<b>Rear Anti-Roll Bars:</b>
-							<%= display_setting tune.anti_roll_bar_r %>
-						</div>
+						<ul>
+							<li>
+								<b>Rear Ride Height Adjustment (mm):</b><br />
+								<%= display_setting tune.ride_height_r %>
+							</li>
+							<li>
+								<b>Rear Spring Rate (kgf/mm):</b><br />
+								<%= display_setting tune.spring_rate_r %>
+							</li>
+							<li>
+								<b>Rear Dampers (Extension):</b><br />
+								<%= display_setting tune.dampners_ext_r %>
+							</li>
+							<li>
+								<b>Rear Dampers (Compression):</b><br />
+								<%= display_setting tune.dampners_comp_r %>
+							</li>
+							<li>
+								<b>Rear Anti-Roll Bars:</b><br />
+								<%= display_setting tune.anti_roll_bar_r %>
+							</li>
+						</ul>
 					</td>
 				</tr>
 			</tbody>
@@ -78,30 +64,28 @@
 				</tr>
 				<tr>
 					<td>
-						<div class="field">
-							<b>Front Camber Angle:</b>
-							<%= display_setting tune.camber_f %>
-						</div>
+						<ul>
+							<li>
+								<b>Front Camber Angle:</b><br />
+								<%= display_setting tune.camber_f %>
+							</li>
+							<li>
+								<b>Front Toe Angle:</b><br />
+								<%= display_setting tune.toe_f %>
+							</li>
+						</ul>
 					</td>
 					<td>
-						<div class="field">
-							<b>Front Toe Angle:</b>
-							<%= display_setting tune.toe_f %>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="field">
-							<b>Rear Camber Angle:</b>
-							<%= display_setting tune.camber_r %>
-						</div>
-					</td>
-					<td>
-						<div class="field">
-							<b>Rear Toe Angle:</b>
-							<%= display_setting tune.toe_r %>
-						</div>
+						<ul>
+							<li>
+								<b>Rear Camber Angle:</b><br />
+								<%= display_setting tune.camber_r %>
+							</li>
+							<li>
+								<b>Rear Toe Angle:</b><br />
+								<%= display_setting tune.toe_r %>
+							</li>
+						</ul>
 					</td>
 				</tr>
 			</tbody>

@@ -1,19 +1,23 @@
-<table cellspacing="10px">
+<table cellspacing="10px" class="tune-settings">
 	<tr>
-		<th><h3>Aero</h3></th>
+		<th><h4>Aero</h4></th>
 	</tr>
 	<tr>
 		<td>
-			<div class="field">
-				<b>Front Downforce:</b>
-				<%= display_setting tune.downforce_f %>
-			</div>
+			<ul>
+				<li>
+					<b>Front Downforce:</b><br />
+					<%= display_setting tune.downforce_f %>
+				</li>
+			</ul>
 		</td>
 		<td>
-			<div class="field">
-				<b>Rear Downforce:</b>
-				<%= display_setting tune.downforce_r %>
-			</div>
+			<ul>
+				<li>
+					<b>Rear Downforce:</b><br />
+					<%= display_setting tune.downforce_r %>
+				</li>
+			</ul>
 		</td>
 	</tr>
 	<tr>
@@ -21,16 +25,20 @@
 	</tr>
 	<tr>
 		<td>
-			<div class="field">
-				<b>Ballast Amount:</b>
-				<%= display_setting tune.ballast_amount %>
-			</div>
+			<ul>
+				<li>
+					<b>Ballast Amount:</b><br />
+					<%= display_setting tune.ballast_amount %>
+				</li>
+			</ul>
 		</td>
 		<td>
-			<div class="field">
-				<b>Ballast Position:</b>
-				<%= display_setting tune.ballast_position %>
-			</div>
+			<ul>
+				<li>
+					<b>Ballast Position:</b><br />
+					<%= display_setting tune.ballast_position %>
+				</li>
+			</ul>
 		</td>
 	</tr>
 </table><br />

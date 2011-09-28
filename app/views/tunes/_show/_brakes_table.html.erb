@@ -1,20 +1,24 @@
 <h2>Brakes</h2>
-<table cellspacing="10px">
+<table cellspacing="10px" class="tune-settings">
 	<tr>
 		<th><h3>Balance Controller</h3></th>
 	</tr>
 	<tr>
 		<td>
-			<div class="field">
-				<b>Front</b><br />
-				<%= display_setting tune.brake_balance_f %>
-			</div>
+			<ul>
+				<li>
+					<b>Front</b><br />
+					<%= display_setting tune.brake_balance_f %>
+				</li>
+			</ul>
 		</td>
 		<td>
-			<div class="field">
-				<b>Rear</b><br />
-				<%= display_setting tune.brake_balance_r %>
-			</div>
+			<ul>
+				<li>
+					<b>Rear</b><br />
+					<%= display_setting tune.brake_balance_r %>
+				</li>
+			</ul>
 		</td>
 	</tr>
 </table>

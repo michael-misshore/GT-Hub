@@ -1,43 +1,37 @@
 <div id="lsd_table">
-	<table cellspacing="10px">
+	<table cellspacing="10px" class="tune-settings">
 		<tr>
 			<td>
-				<div class="field">
-					<b>Front Initial Torque:</b>
-					<%= display_setting tune.initial_torque_f %>
-				</div>
+				<ul>
+					<li>
+						<b>Front Initial Torque:</b><br />
+						<%= display_setting tune.initial_torque_f %>
+					</li>
+					<li>
+						<b>Front Acceleration Sensitivity:</b><br />
+						<%= display_setting tune.acceleration_sensitivity_f %>
+					</li>
+					<li>
+						<b>Front Braking Sensitivity:</b><br />
+						<%= display_setting tune.braking_sensitivity_f %>
+					</li>
+				</ul>
 			</td>
 			<td>
-				<div class="field">
-					<b>Front Acceleration Sensitivity:</b>
-					<%= display_setting tune.acceleration_sensitivity_f %>
-				</div>
-			</td>
-			<td>
-				<div class="field">
-					<b>Front Braking Sensitivity:</b>
-					<%= display_setting tune.braking_sensitivity_f %>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<div class="field">
-					<b>Rear Initial Torque:</b>
-					<%= display_setting tune.initial_torque_r %>
-				</div>
-			</td>
-			<td>
-				<div class="field">
-					<b>Rear Acceleration Sensitivity:</b>
-					<%= display_setting tune.acceleration_sensitivity_r %>
-				</div>
-			</td>
-			<td>
-				<div class="field">
-					<b>Rear Braking Sensitivity:</b>
-					<%= display_setting tune.braking_sensitivity_r %>
-				</div>
+				<ul>
+					<li>
+						<b>Rear Initial Torque:</b><br />
+						<%= display_setting tune.initial_torque_r %>
+					</li>
+					<li>
+						<b>Rear Acceleration Sensitivity:</b><br />
+						<%= display_setting tune.acceleration_sensitivity_r %>
+					</li>
+					<li>
+						<b>Rear Braking Sensitivity:</b><br />
+						<%= display_setting tune.braking_sensitivity_r %>
+					</li>
+				</ul>
 			</td>
 		</tr>
 	</table>

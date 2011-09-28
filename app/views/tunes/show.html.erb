@@ -112,7 +112,7 @@
 	<%= render :partial => 'tunes/_show/parts', :locals => { :groups => @groups, :tune => @tune } %>
 </div>
 
-<% if @tune.tuner_id == current_tuner.id %>
+<% if current_tuner.present? && @tune.tuner_id == current_tuner.id %>
 	<%= link_to 'Edit', edit_tune_path(@tune) %> |
 <% end %>
 <%= link_to 'Back', tunes_path %>

@@ -24,6 +24,7 @@ a {
 }
 
 a:hover {
+	text-decoration: none;
 	color: #e02425;
 }
 
@@ -149,4 +150,28 @@ table.tune-settings td {
 
 #transmission_table ul li {
 	float: none;
+}
+
+#tune_filters table label {
+	width: 80px;
+	float: left;
+}
+
+#tune_filters input {
+	float: left;
+}
+
+#tune_filters select {
+	width: 175px !important;
+}
+
+#tune_filters table td {
+	vertical-align: top;
+}
+
+
+/* Filters */
+
+label.checkbox_label {
+	padding: 0;
 }
