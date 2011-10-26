@@ -2,38 +2,42 @@
 <div id="tune_filters" style="display: none;">
 	<table>
 		<tr>
-			<th><h3>By Car: </h3></th>
+			<th><h3><%= label_tag('filter_cars_make', "By Car: ") %></h3></th>
 			<th><h3><%= label_tag('filter_track_id', "By Track: ") %></h3></th>
-			<th><h3><%= label_tag('filter_type', "Tune Type: ") %></h3></th>
+			<th><h3><%= label_tag('filter_tune_type', "Tune Type: ") %></h3></th>
 		</tr>
 		<tr>
-			<td width="40%">
+			<td width="44%">
 				<%= label_tag('filter_cars_make', "Make: ") %>
 				<%= select_tag("filter[cars_make]", options_from_collection_for_select(Car.select('DISTINCT `make`').all, "make", "make", params['filter']['cars_make']), :include_blank => '- Select a Make -') %><br />
 				<%= label_tag('filter_cars_year', "Year: ") %>
-				<%= select_tag("filter[cars_year]") %>
-				<%= label_tag('filter_cars_premium', "Premium") %>
-				<%= check_box_tag 'filter[cars_premium]', 'premium', params['filter']['cars_premium'] %>
-				<%= label_tag('filter_cars_standard', "Standard") %>
-				<%= check_box_tag 'filter[cars_standard]', 'standard', params['filter']['cars_standard'] %><br />
+				<%= select_tag("filter[cars_year]") %><br /><br />
+				<%= label_tag('filter_cars_premium', "Premium", {:class => 'checkbox_label'}) %>
+				<%= check_box_tag 'filter[cars_premium]', 'premium', params['filter']['cars_premium'] %>&nbsp; &nbsp;
+				<%= label_tag('filter_cars_standard', "Standard", {:class => 'checkbox_label'}) %>
+				<%= check_box_tag 'filter[cars_standard]', 'standard', params['filter']['cars_standard'] %><br /><br /,>
 				<%= label_tag('filter_cars_id', "Model: ") %>
-				<%= select_tag("filter[cars_id]", nil, {:style => 'width: 125px'}) %>
+				<%= select_tag("filter[cars_id]") %>
 			</td>
-			<td width="35%">
+			<td width="33%">
 				<%= select_tag("filter[track_id]", options_from_collection_for_select(Track.order('name').all, "id", "name", params['filter']['track_id']), :include_blank => '- Select a Track -', :style => 'width: 200px') %>
 			</td>
-			<td width="25%">
+			<td width="23%">
 				<%= select_tag("filter[tune_type]", options_for_select(['Grip', 'Drift', 'Drag'], params['filter']['tune_type']), :include_blank => '- Select a Type -') %>
 			</td>
 		</tr>
 	</table>
-	<%= submit_tag("Filter") %>
-	<%= link_to 'Reset Filters', @form_uri %>
+	<%= submit_tag('Filter', :class => 'btn') %> &nbsp;
+	<%= link_to 'Reset Filters', @form_uri, :class => "btn" %>
 </div>
 
 <script>
 $(document).ready(function() {
 	get_years($('#filter_cars_make').val(), 0);
+	
+	<% if params['filter'].present? %>
+		$('#tune_filters').toggle();
+	<% end %>
 	
 	$('#filters_header').click(function() {
 		$('#tune_filters').toggle();

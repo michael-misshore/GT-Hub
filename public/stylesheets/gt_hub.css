@@ -104,8 +104,20 @@ input[hidden=hidden] {
 }
 
 #header-nav li:first-child {
-	border-left:none
+	border-left: none;
 }
+
+#news {
+	width:575px;
+	height: 300px;
+}
+
+#home_sidebar {
+	width: 200px;
+	float: right;
+}
+
+/* END CONTENT ITEMS */
 
 /*PARTS TABLES*/
 
@@ -114,7 +126,7 @@ input[hidden=hidden] {
 }
 
 #tunetabs input {
-	width: 50px !important;
+	width: 50px;
 }
 
 #tunetabs h2 {
@@ -152,6 +164,10 @@ table.tune-settings td {
 	float: none;
 }
 
+/* END Parts Tables */
+
+/* Filters */
+
 #tune_filters table label {
 	width: 80px;
 	float: left;
@@ -169,9 +185,31 @@ table.tune-settings td {
 	vertical-align: top;
 }
 
-
-/* Filters */
-
 label.checkbox_label {
 	padding: 0;
 }
+
+/* END Filters */
+
+/* Tune Listing */
+
+#tune-view-btn {
+	width: 60px;
+}
+
+#tune-form-btn {
+	width: 120px !important;
+}
+
+/* END Tune Listing */
+
+/* Devise Styles */
+
+form.tuner_edit input[type=text],
+form.tuner_new input[type=text],
+form.tuner_new input[type=password] {
+	position: relative;
+	top: -15px;
+}
+
+/* END Devise Styles */

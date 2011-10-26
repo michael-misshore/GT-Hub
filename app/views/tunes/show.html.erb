@@ -113,9 +113,9 @@
 </div>
 
 <% if current_tuner.present? && @tune.tuner_id == current_tuner.id %>
-	<%= link_to 'Edit', edit_tune_path(@tune) %> |
+	<%= link_to 'Edit', edit_tune_path(@tune), :class => 'btn' %> |
 <% end %>
-<%= link_to 'Back', tunes_path %>
+<%= link_to 'Back', tunes_path, :class => 'btn' %>
 
 <script>
 $(document).ready(function() {

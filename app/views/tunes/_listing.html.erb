@@ -1,19 +1,20 @@
 <table>
 	<tr>
 		<th></th>
+		<th></th>
 		<th><%= listing_header('karma', params['order_by']['karma']) %></th>
 		<th><%= listing_header('tune_type', params['order_by']['tune_type'], 'Tune Type') %></th>
 		<th><%= listing_header('car', params['order_by']['car']) %></th>
 		<th><%= listing_header('track', params['order_by']['track']) %></th>
 		<th>Tuner</th>
 		<th></th>
-		<th></th>
-		<th></th>
+		<!-- <th></th> -->
 
 	</tr>
 
 	<% @tunes.each do |tune| %>
 	<tr>
+		<td><%= link_to 'View Tune', tune, :id => "tune-view-btn", :class => "btn" %></td>
 		<td>
 			<!-- Upvote / Downvote Logic -->
 			<% if tuner_signed_in? %>
@@ -34,9 +35,8 @@
 		<td><%= tune.car.display_name %></td>
 		<td><%= tune.track.name %></td>
 		<td><%= tune.tuner.tuner_name %></td>
-		<td><%= link_to 'Show', tune %></td>
-		<td><%= link_to 'Edit', edit_tune_path(tune) %></td>
-		<td><%= link_to 'Destroy', tune, :confirm => 'Are you sure?', :method => :delete %></td>
+		<td><%= link_to 'Edit', edit_tune_path(tune), :class => "btn" %></td>
+		<!-- <td><% link_to 'Destroy', tune, :confirm => 'Are you sure?', :method => :delete %></td> -->
 	</tr>
 	<% end %>
 </table>
@@ -45,7 +45,7 @@
 
 <br />
 
-<%= link_to 'New Tune', new_tune_path %>
+<%= link_to 'New Tune', new_tune_path, :class => "btn" %>
 
 <script>
 function add_karam_point(tune_id, point) {
