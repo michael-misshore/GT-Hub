@@ -3,20 +3,20 @@ require 'spec_helper'
 describe Tuner do
     
   context "karma points" do
-    let(:tuner) { Factory(:tuner) }
-    let(:tune) { Factory(:tune, :tuner => tuner) }
     
     before(:each) do
-      tune.save
+      @tune = Factory(:tune)
+      @tuner = Tuner.find(@tune.tuner_id)
+      @tune.save
     end
     
     it "should add one (1) total karma point upon tune creation" do 
       # Because the tune is saved and created by our tuner
-      tuner.total_karma.to_i.should eq(1)
+      @tuner.total_karma.should == 1
     end
     
     it "should remove karma points belonging to a tune when destroyed" do 
-      expect{ tune.destroy }.to change{ tuner.total_karma.to_i }.from(1).to(0)
+      expect{ @tune.destroy }.to change{ @tuner.total_karma }.from(1).to(0)
     end
   end  
 end
