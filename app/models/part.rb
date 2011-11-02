@@ -16,7 +16,7 @@ class Part < ActiveRecord::Base
         @subgroup = ''
       elsif !line.strip.empty?
         pieces = line.split(',', 3)
-        part = Part.new({:name => pieces[0].strip, :group => @group, :subgroup => @subgroup, :select_class => pieces[1].strip, :settings_div_id => pieces[2].strip})
+        part = Part.new({:name => pieces[0].strip, :primary_group => @group, :subgroup => @subgroup, :select_class => pieces[1].strip, :settings_div_id => pieces[2].strip})
         part.save
       end
     }
@@ -24,7 +24,7 @@ class Part < ActiveRecord::Base
 
   def self.get_groups_hash
     groups = {}
-    order('`group`').all.group_by(&:group).each do |group, parts|
+    order('primary_group').all.group_by(&:primary_group).each do |group, parts|
       subgroups = {}
       parts.group_by(&:subgroup).each do |subgroup, parts|
         subgroups[subgroup] = parts.group_by(&:select_class)

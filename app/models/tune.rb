@@ -58,7 +58,7 @@ class Tune < ActiveRecord::Base
   
   scope :karma, lambda { 
     select('tunes.*, kp.karma').
-    joins('LEFT JOIN (SELECT CAST(SUM(karma) AS SIGNED) AS karma, tune_id FROM karma_points GROUP BY tune_id) AS kp ON kp.tune_id = tunes.id')
+    joins('LEFT JOIN (SELECT SUM(karma) AS karma, tune_id FROM karma_points GROUP BY tune_id) AS kp ON kp.tune_id = tunes.id')
   }
   scope :included, karma
   

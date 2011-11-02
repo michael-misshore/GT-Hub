@@ -43,10 +43,10 @@ ActiveRecord::Schema.define(:version => 20110821170451) do
   end
 
   create_table "parts", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
-    t.string   "group",                           :null => false
+    t.string   "primary_group",                   :null => false
     t.string   "select_class",                    :null => false
     t.string   "settings_div_id",                 :null => false
     t.string   "subgroup",        :default => "", :null => false
@@ -58,19 +58,15 @@ ActiveRecord::Schema.define(:version => 20110821170451) do
   end
 
   create_table "tracks", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "group"
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tuners", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "tuner_name",                                          :null => false
     t.string   "email",                               :default => "", :null => false
     t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                       :default => "", :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
@@ -79,6 +75,9 @@ ActiveRecord::Schema.define(:version => 20110821170451) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "tuner_name",                                          :null => false
     t.integer  "group_id",                            :default => 0,  :null => false
   end
 
@@ -87,12 +86,12 @@ ActiveRecord::Schema.define(:version => 20110821170451) do
   add_index "tuners", ["tuner_name"], :name => "index_tuners_on_tuner_name", :unique => true
 
   create_table "tunes", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "car_id"
     t.integer  "tuner_id"
     t.integer  "track_id"
     t.string   "tune_type",                  :default => "Grip",   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "downforce_f"
     t.integer  "downforce_r"
     t.integer  "ballast_amount"

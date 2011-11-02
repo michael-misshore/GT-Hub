@@ -9,7 +9,7 @@
 		<tr>
 			<td width="44%">
 				<%= label_tag('filter_cars_make', "Make: ") %>
-				<%= select_tag("filter[cars_make]", options_from_collection_for_select(Car.select('DISTINCT `make`').all, "make", "make", params['filter']['cars_make']), :include_blank => '- Select a Make -') %><br />
+				<%= select_tag("filter[cars_make]", options_from_collection_for_select(Car.select('DISTINCT make').all, "make", "make", params['filter']['cars_make']), :include_blank => '- Select a Make -') %><br />
 				<%= label_tag('filter_cars_year', "Year: ") %>
 				<%= select_tag("filter[cars_year]") %><br /><br />
 				<%= label_tag('filter_cars_premium', "Premium", {:class => 'checkbox_label'}) %>
