@@ -94,7 +94,7 @@ class TunesController < ApplicationController
   # May move to it's own controller
   def add_karma_point
     @tune = Tune.find(params[:id])
-    @tune.add_karma_point params[:point]
+    @tune.add_karma_point(current_tuner.id, params[:point])
 
     respond_to do |format|
       format.json  { render :json => { :total_karma => current_tuner.total_karma, :tune_karma => @tune.karma_sum }, :content_type => "text/html" }
