@@ -1,6 +1,5 @@
-<table>
+<table class="no-border">
 	<tr>
-		<th></th>
 		<th></th>
 		<th><%= listing_header('karma', params['order_by']['karma']) %></th>
 		<th><%= listing_header('tune_type', params['order_by']['tune_type'], 'Tune Type') %></th>
@@ -13,31 +12,39 @@
 	</tr>
 
 	<% @tunes.each do |tune| %>
-	<tr>
-		<td><%= link_to 'View Tune', tune, :id => "tune-view-btn", :class => "btn" %></td>
-		<td>
-			<!-- Upvote / Downvote Logic -->
-			<% if tuner_signed_in? %>
-				<% registered_upvote = !tune.karma_points.find(:all, :conditions => ["tuner_id = ? AND karma = 1", current_tuner.id]).empty? %>
-				<% registered_downvote = !tune.karma_points.find(:all, :conditions => ["tuner_id = ? AND karma = -1", current_tuner.id]).empty? %>
-				<% no_registered_votes = !registered_upvote && !registered_downvote %>
-
-				<span id="upvote_<%= tune.id %>"<%= ' style=display:none;' unless no_registered_votes || registered_downvote %>>
-					<%= link_to 'Upvote', '', { :id => tune.id, :onclick => 'add_karam_point(this.id, 1);return false;' } %>
-				</span><br>
-				<span id="downvote_<%= tune.id %>"<%= ' style=display:none;' unless no_registered_votes || registered_upvote %>>
-					<%= link_to 'Downvote', '', { :id => tune.id, :onclick => 'add_karam_point(this.id, -1);return false;' } %>
-				</span>
-			<% end %>
-		</td>
-		<td><span id="karma_points_<%= tune.id %>"><%= tune.karma %></span></td>
-		<td><%= tune.tune_type %></td>
-		<td><%= tune.car.display_name %></td>
-		<td><%= tune.track.name %></td>
-		<td><%= tune.tuner.tuner_name %></td>
-		<td><%= link_to 'Edit', edit_tune_path(tune), :class => "btn" %></td>
-		<!-- <td><% link_to 'Destroy', tune, :confirm => 'Are you sure?', :method => :delete %></td> -->
-	</tr>
+		<tr>
+			<td><%= link_to 'View Tune', tune, :id => "tune-view-btn", :class => "btn" %></td>
+			<td>
+				<!-- Upvote / Downvote Logic -->
+				<% if tuner_signed_in? %>
+					<% registered_upvote = !tune.karma_points.find(:all, :conditions => ["tuner_id = ? AND karma = 1", current_tuner.id]).empty? %>
+					<% registered_downvote = !tune.karma_points.find(:all, :conditions => ["tuner_id = ? AND karma = -1", current_tuner.id]).empty? %>
+					<% no_registered_votes = !registered_upvote && !registered_downvote %>
+				<% end %>
+				<div class="karma-voting-container">
+					<div class="karma-points">
+						<span id="karma_points_<%= tune.id %>"><b><%= tune.karma.to_i %></b></span>
+					</div>
+					<div class="add-karma-point">
+						<% upvote_class = (!tuner_signed_in? || no_registered_votes || registered_downvote) ? ' no-vote' : ' positive' %>
+						<% upvote_link_html = '<span id="upvote_' + tune.id.to_s + '" class="pictos' + upvote_class + '">{</span>' %>
+						<%= link_to upvote_link_html.html_safe, '', { :id => tune.id, :class => "vote up" } %>
+					</div>
+					<div class="remove-karma-point">
+						<% downvote_class = (!tuner_signed_in? || no_registered_votes || registered_upvote) ? ' no-vote' : ' negative' %>
+						<% downvote_link_html = '<span id="downvote_' + tune.id.to_s + '" class="pictos' + downvote_class + '">}</span>' %>
+						<%= link_to downvote_link_html.html_safe, '', { :id => tune.id, :class => "vote down" } %>
+					</div>
+				</div>
+				<!-- END Upvote / Downvote Logic -->
+			</td>
+			<td><%= tune.tune_type %></td>
+			<td><%= tune.car.display_name %></td>
+			<td><%= tune.track.name %></td>
+			<td><%= tune.tuner.tuner_name %></td>
+			<td><%= link_to 'Edit', edit_tune_path(tune), :class => "btn" %></td>
+			<!-- <td><% link_to 'Destroy', tune, :confirm => 'Are you sure?', :method => :delete %></td> -->
+		</tr>
 	<% end %>
 </table>
 
@@ -45,26 +52,37 @@
 
 <br />
 
-<%= link_to 'New Tune', new_tune_path, :class => "btn" %>
+<%= link_to 'New Tune', new_tune_path, :class => "btn primary" %>
 
 <script>
-function add_karam_point(tune_id, point) {
-	$.get('/tunes/add_karma_point.json', {id: tune_id, point: point}, function(data) {
-		$('#karma_points_' + tune_id).html(data.tune_karma);
-		if (point == 1) {
-			$("#downvote_" + tune_id).show();
-			$("#upvote_" + tune_id).hide();
-		} else {
-			$("#downvote_" + tune_id).hide();
-			$("#upvote_" + tune_id).show();
-		}
+$(document).ready(function() {
+	$("body").ajaxError(function(e, request) {
+		if (request.status == 401) window.location.replace('<%= new_tuner_session_path %>');
+	});
+	
+	$(".vote").click(function() {
+		point = ($(this).hasClass("up")) ? 1 : -1;
+		id = $(this).attr('id');
+		$.get('/tunes/add_karma_point.json', {id: id, point: point}, function(data) {
+			$('#karma_points_' + id).html(data.tune_karma);
+			if (point == 1) {
+				$("#downvote_" + id).removeClass('negative').addClass('no-vote');
+				$("#upvote_" + id).removeClass('no-vote').addClass('positive');
+			} else {
+				$("#downvote_" + id).removeClass('no-vote').addClass('negative');
+				$("#upvote_" + id).removeClass('positive').addClass('no-vote');
+			}
+
+			// If #total_karma exists (span on a tuners page which show the total karma). Grab the latest value
+			if ($('#total_karma').length > 0) {
+				$('#total_karma').html(data.total_karma)
+			}
+		}, 'json');
 		
-		// If #total_karma exists (span on a tuners page which show the total karma). Grab the latest value
-		if ($('#total_karma').length > 0) {
-			$('#total_karma').html(data.total_karma)
-		}
-	}, 'json');
-}
+		return false;
+	});
+	
+});
 
 function order_tunes(id) {
 	direction = ($(id).val() == 'ASC') ? 'DESC' : 'ASC';

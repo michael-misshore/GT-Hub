@@ -60,6 +60,10 @@ table th {
 }
 
 
+table td {
+	vertical-align: center;
+}
+
 /* CONTENT ITEMS*/
 #content-wrapper {
 	width: 850px;
@@ -217,6 +221,45 @@ label.checkbox_label {
 
 #tune-form-btn {
 	width: 120px !important;
+}
+
+div.karma-voting-container {
+	width: 40px;
+	align: center;
+}
+
+div.karma-voting-container div {
+	height: 10px;
+}
+
+div.karma-voting-container span.no-vote {
+	color: gray;
+}
+
+div.karma-voting-container span.positive {
+	color: green;
+}
+
+div.karma-voting-container span.negative {
+	color: red;
+}
+
+div.karma-voting-container .add-karma-point {
+	padding-bottom: 5px;
+	width: 10px;
+}
+
+div.karma-voting-container .remove-karma-point {
+	padding-top: 5px;
+	width: 10px;
+}
+
+div.karma-voting-container .karma-points {
+	float: right;
+	text-align: center;
+	width: 25px;
+	position: relative;
+	top: 8px;
 }
 
 /* END Tune Listing */
