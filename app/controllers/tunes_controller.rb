@@ -41,7 +41,7 @@ class TunesController < ApplicationController
     @title = 'Edit Tune'
     @tune = Tune.find(params[:id])
     
-    redirect_to(tunes_path, :notice => "You are not the tuner for this tune") if @tune && current_tuner.id = @tune.tuner.id
+    redirect_to(tunes_path, :notice => "You are not the tuner for this tune") unless @tune && current_tuner.id == @tune.tuner.id
     
     @groups = Part.get_groups_hash()
   end
@@ -70,7 +70,7 @@ class TunesController < ApplicationController
     @title = 'Edit Tune'
     @tune = Tune.find(params[:id])
     
-    redirect_to(tunes_path, :notice => "You are not the tuner for this tune") if @tune && current_tuner.id = @tune.tuner.id
+    redirect_to(tunes_path, :notice => "You are not the tuner for this tune") unless @tune && current_tuner.id == @tune.tuner.id
     
     @groups = Part.get_groups_hash()
 

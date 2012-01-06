@@ -42,7 +42,10 @@
 			<td><%= tune.car.display_name %></td>
 			<td><%= tune.track.name %></td>
 			<td><%= tune.tuner.tuner_name %></td>
-			<td><%= link_to 'Edit', edit_tune_path(tune), :class => "btn" %></td>
+			<td>
+				<% disabled = (current_tuner && current_tuner.id == tune.tuner.id) ? '' : ' disabled'%>
+				<%= link_to 'Edit', edit_tune_path(tune), :class => "btn#{disabled}" %>
+			</td>
 			<!-- <td><% link_to 'Destroy', tune, :confirm => 'Are you sure?', :method => :delete %></td> -->
 		</tr>
 	<% end %>

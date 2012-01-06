@@ -19,7 +19,7 @@
 		<b>Total Karma:</b>
 		<span id="total_karma"><%= @tuner.total_karma %></span>
 	</p>
-	<%= link_to 'Edit Account', edit_tuner_path, :class => "btn" %><br />
+	<%= link_to 'Edit Account', edit_tuner_path, :class => "btn" if current_tuner && current_tuner.id == @tuner.id %><br />
 </div>
 
 <br />
