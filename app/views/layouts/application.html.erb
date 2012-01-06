@@ -17,7 +17,7 @@
 			<% else %>
 				<li><%= link_to 'Login', new_tuner_session_path %></li>
 			<% end %>
-			<li><%= link_to 'Donate', '' %></li>
+			<li><%= link_to 'Donate', donate_path %></li>
 		</ul>
 		<div id="logo">
 			<%= link_to image_tag("logo.png"), root_path %>
@@ -32,7 +32,10 @@
 			<div id="content">
 				<!-- Flash Messages -->
 				<% flash.each do |name, msg| %>
-				      <%= content_tag :h2, msg, :id => "flash_#{name}" %>
+					<br />
+					<div class="alert-message info">
+						<%= content_tag :p, msg, :id => "flash_#{name}" %>
+					</div>
 				<% end %>
 				<!-- Yield For Actual Content -->
 				<%= yield %>

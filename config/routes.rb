@@ -12,6 +12,8 @@ GTHub::Application.routes.draw do
 
   match 'cars/_get_years' => 'cars#_get_years'
   match 'cars/_get_models' => 'cars#_get_models'
+  
+  match 'donate' => 'donate#index'
 
   resources :tuners
   # resources :groups
