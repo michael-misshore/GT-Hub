@@ -32,5 +32,5 @@
 		<%= render 'tunes/listing' %><br />
 	<% end %>
 <% else %>
-	<h3>No tunes available </h3><%= link_to 'Create a New Tune', new_tune_path, :class => "btn primary" %>
+	<h3>No tunes available </h3><%= link_to 'Create a New Tune', new_tune_path, :class => "btn primary" if current_tuner && current_tuner.id == @tuner.id %>
 <% end %>
