@@ -41,7 +41,7 @@
 			<td><%= tune.tune_type %></td>
 			<td><%= tune.car.display_name %></td>
 			<td><%= tune.track.name %></td>
-			<td><%= tune.tuner.tuner_name %></td>
+			<td><%= link_to tune.tuner.tuner_name, tuner_path(tune.tuner) %></td>
 			<td>
 				<% disabled = (current_tuner && current_tuner.id == tune.tuner.id) ? '' : ' disabled'%>
 				<%= link_to 'Edit', edit_tune_path(tune), :class => "btn#{disabled}" %>
@@ -55,7 +55,7 @@
 
 <br />
 
-<%= link_to 'New Tune', new_tune_path, :class => "btn primary" %>
+<%= link_to 'New Tune', new_tune_path, :class => "btn primary" if (@tuner && @tuner.id == current_tuner.id) || @tuner.nil? %>
 
 <script>
 $(document).ready(function() {

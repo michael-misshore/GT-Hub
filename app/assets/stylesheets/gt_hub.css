@@ -64,6 +64,13 @@ table td {
 	vertical-align: center;
 }
 
+div#footer {
+	text-align: center;
+	color: white;
+}
+
+/* END Layout Styles */
+
 /* CONTENT ITEMS*/
 #content-wrapper {
 	width: 850px;
