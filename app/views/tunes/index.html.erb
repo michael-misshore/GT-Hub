@@ -1,6 +1,9 @@
-<%= form_tag(tunes_path, :method => "get") do %>
-
-	<%= render 'filters', :locals => { :form_uri => tunes_path }%>
-	<%= render 'listing' %>
-	
+<% if @tunes.count > 0 %>
+	<%= form_tag(tunes_path, :method => "get") do %>
+		<%= render 'filters', :locals => { :form_uri => tunes_path }%>
+		<%= render 'listing' %>
+	<% end %>
+<% else %>
+	<h2> Be the first to add a tune!</h2><br />
+	<%= link_to 'Create a New Tune', new_tune_path, :class => "btn primary" %>
 <% end %>

@@ -3,10 +3,10 @@
 		<b>Tuner Name:</b>
 		<%= @tuner.tuner_name %>
 	</p>
-	<p>
+	<!-- <p>
 		<b>Email:</b>
 		<%= @tuner.email %>
-	</p>
+	</p> -->
 	<p>
 		<b>Date Joined:</b>
 		<%= format_date(@tuner.created_at) %>
@@ -26,7 +26,11 @@
 
 <h1>Tunes</h1>
 
-<%= form_tag(tuner_path, :method => "get") do %>
-	<%= render 'tunes/filters', :locals => { :form_uri => tuner_path } %>
-	<%= render 'tunes/listing' %><br />
+<% if @tunes.count > 0 %>
+	<%= form_tag(tuner_path, :method => "get") do %>
+		<%= render 'tunes/filters', :locals => { :form_uri => tuner_path } %>
+		<%= render 'tunes/listing' %><br />
+	<% end %>
+<% else %>
+	<h3>No tunes available </h3><%= link_to 'Create a New Tune', new_tune_path, :class => "btn primary" %>
 <% end %>
