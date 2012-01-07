@@ -19,9 +19,9 @@ class Tuner < ActiveRecord::Base
   def to_param
     tuner_name.downcase
   end
-  
-  def self.find_by_param(id)
-    where(:tuner_name => id).first
+
+  def self.find_by_param (param)
+    where('lower(tuner_name) = ?', param.downcase).first
   end
   
   def total_karma(tuner_id = nil)
