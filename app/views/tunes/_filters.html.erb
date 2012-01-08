@@ -1,4 +1,5 @@
-<a href=""><h3 id="filters_header">Filters</h3></a>
+<%= link_to 'Create a Tune', new_tune_path, :class => "btn primary" if @tuner.nil? || @tuner.id == current_tuner.id %>
+<a href="#" class="btn" id="filters_header">Toggle Filters</a>
 <div id="tune_filters" style="display: none;">
 	<table>
 		<tr>
@@ -15,7 +16,7 @@
 				<%= label_tag('filter_cars_premium', "Premium", {:class => 'checkbox_label'}) %>
 				<%= check_box_tag 'filter[cars_premium]', 'premium', params['filter']['cars_premium'] %>&nbsp; &nbsp;
 				<%= label_tag('filter_cars_standard', "Standard", {:class => 'checkbox_label'}) %>
-				<%= check_box_tag 'filter[cars_standard]', 'standard', params['filter']['cars_standard'] %><br /><br /,>
+				<%= check_box_tag 'filter[cars_standard]', 'standard', params['filter']['cars_standard'] %><br /><br />
 				<%= label_tag('filter_cars_id', "Model: ") %>
 				<%= select_tag("filter[cars_id]") %>
 			</td>
@@ -29,6 +30,7 @@
 	</table>
 	<%= submit_tag('Filter', :class => 'btn') %> &nbsp;
 	<%= link_to 'Reset Filters', @form_uri, :class => "btn" %>
+	<%= hidden_field('show_filters', nil, {:id => 'show_filters', :name => 'show_filters', :value => params['show_filters']}) %>
 </div>
 
 <br /><br />
@@ -37,12 +39,13 @@
 $(document).ready(function() {
 	get_years($('#filter_cars_make').val(), 0);
 	
-	<% if params['filter'].present? %>
-		$('#tune_filters').toggle();
-	<% end %>
+	if ($('#show_filters').val() == "1") $('#tune_filters').toggle();
 	
 	$('#filters_header').click(function() {
-		$('#tune_filters').toggle();
+		$('#tune_filters').toggle(function() {
+			if ($('#show_filters').val() == "1") $('#show_filters').val("0");
+			else $('#show_filters').val("1");
+		});
 		return false;
 	})
 	

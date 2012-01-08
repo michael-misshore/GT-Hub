@@ -1,61 +1,61 @@
-<table class="no-border">
-	<tr>
-		<th></th>
-		<th><%= listing_header('karma', params['order_by']['karma']) %></th>
-		<th><%= listing_header('tune_type', params['order_by']['tune_type'], 'Tune Type') %></th>
-		<th><%= listing_header('car', params['order_by']['car']) %></th>
-		<th><%= listing_header('track', params['order_by']['track']) %></th>
-		<th>Tuner</th>
-		<th></th>
-		<!-- <th></th> -->
-
-	</tr>
-
-	<% @tunes.each do |tune| %>
+<% if @tunes.count == 0 %>
+	<h3>No Tunes Found</h3>
+<% else %>
+	<table class="no-border">
 		<tr>
-			<td><%= link_to 'View Tune', tune, :id => "tune-view-btn", :class => "btn" %></td>
-			<td>
-				<!-- Upvote / Downvote Logic -->
-				<% if tuner_signed_in? %>
-					<% registered_upvote = !tune.karma_points.find(:all, :conditions => ["tuner_id = ? AND karma = 1", current_tuner.id]).empty? %>
-					<% registered_downvote = !tune.karma_points.find(:all, :conditions => ["tuner_id = ? AND karma = -1", current_tuner.id]).empty? %>
-					<% no_registered_votes = !registered_upvote && !registered_downvote %>
-				<% end %>
-				<div class="karma-voting-container">
-					<div class="karma-points">
-						<span id="karma_points_<%= tune.id %>"><b><%= tune.karma.to_i %></b></span>
-					</div>
-					<div class="add-karma-point">
-						<% upvote_class = (!tuner_signed_in? || no_registered_votes || registered_downvote) ? ' no-vote' : ' positive' %>
-						<% upvote_link_html = '<span id="upvote_' + tune.id.to_s + '" class="pictos' + upvote_class + '">{</span>' %>
-						<%= link_to upvote_link_html.html_safe, '', { :id => tune.id, :class => "vote up" } %>
-					</div>
-					<div class="remove-karma-point">
-						<% downvote_class = (!tuner_signed_in? || no_registered_votes || registered_upvote) ? ' no-vote' : ' negative' %>
-						<% downvote_link_html = '<span id="downvote_' + tune.id.to_s + '" class="pictos' + downvote_class + '">}</span>' %>
-						<%= link_to downvote_link_html.html_safe, '', { :id => tune.id, :class => "vote down" } %>
-					</div>
-				</div>
-				<!-- END Upvote / Downvote Logic -->
-			</td>
-			<td><%= tune.tune_type %></td>
-			<td><%= tune.car.display_name %></td>
-			<td><%= tune.track.name %></td>
-			<td><%= link_to tune.tuner.tuner_name, tuner_path(tune.tuner) %></td>
-			<td>
-				<% disabled = (current_tuner && current_tuner.id == tune.tuner.id) ? '' : ' disabled'%>
-				<%= link_to 'Edit', edit_tune_path(tune), :class => "btn#{disabled}" %>
-			</td>
-			<!-- <td><% link_to 'Destroy', tune, :confirm => 'Are you sure?', :method => :delete %></td> -->
+			<th></th>
+			<th><%= listing_header('karma', params['order_by']['karma']) %></th>
+			<th><%= listing_header('tune_type', params['order_by']['tune_type'], 'Tune Type') %></th>
+			<th><%= listing_header('car', params['order_by']['car']) %></th>
+			<th><%= listing_header('track', params['order_by']['track']) %></th>
+			<th>Tuner</th>
+			<th></th>
+			<!-- <th></th> -->
+
 		</tr>
-	<% end %>
-</table>
 
-<%= paginate @tunes %>
+		<% @tunes.each do |tune| %>
+			<tr>
+				<td><%= link_to 'View Tune', tune, :id => "tune-view-btn", :class => "btn" %></td>
+				<td>
+					<!-- Upvote / Downvote Logic -->
+					<% if tuner_signed_in? %>
+						<% registered_upvote = !tune.karma_points.find(:all, :conditions => ["tuner_id = ? AND karma = 1", current_tuner.id]).empty? %>
+						<% registered_downvote = !tune.karma_points.find(:all, :conditions => ["tuner_id = ? AND karma = -1", current_tuner.id]).empty? %>
+						<% no_registered_votes = !registered_upvote && !registered_downvote %>
+					<% end %>
+					<div class="karma-voting-container">
+						<div class="karma-points">
+							<span id="karma_points_<%= tune.id %>"><b><%= tune.karma.to_i %></b></span>
+						</div>
+						<div class="add-karma-point">
+							<% upvote_class = (!tuner_signed_in? || no_registered_votes || registered_downvote) ? ' no-vote' : ' positive' %>
+							<% upvote_link_html = '<span id="upvote_' + tune.id.to_s + '" class="pictos' + upvote_class + '">{</span>' %>
+							<%= link_to upvote_link_html.html_safe, '', { :id => tune.id, :class => "vote up" } %>
+						</div>
+						<div class="remove-karma-point">
+							<% downvote_class = (!tuner_signed_in? || no_registered_votes || registered_upvote) ? ' no-vote' : ' negative' %>
+							<% downvote_link_html = '<span id="downvote_' + tune.id.to_s + '" class="pictos' + downvote_class + '">}</span>' %>
+							<%= link_to downvote_link_html.html_safe, '', { :id => tune.id, :class => "vote down" } %>
+						</div>
+					</div>
+					<!-- END Upvote / Downvote Logic -->
+				</td>
+				<td><%= tune.tune_type %></td>
+				<td><%= tune.car.display_name %></td>
+				<td><%= tune.track.name %></td>
+				<td><%= link_to tune.tuner.tuner_name, tuner_path(tune.tuner) %></td>
+				<td>
+					<% disabled = (current_tuner && current_tuner.id == tune.tuner.id) ? '' : ' disabled'%>
+					<%= link_to 'Edit', edit_tune_path(tune), :class => "btn#{disabled}" %>
+				</td>
+				<!-- <td><% link_to 'Destroy', tune, :confirm => 'Are you sure?', :method => :delete %></td> -->
+			</tr>
+		<% end %>
+	</table>
 
-<br />
-
-<%= link_to 'New Tune', new_tune_path, :class => "btn primary" if (@tuner && @tuner.id == current_tuner.id) || @tuner.nil? %>
+	<%= paginate @tunes %>
+<% end %>
 
 <script>
 $(document).ready(function() {
