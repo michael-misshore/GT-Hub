@@ -70,7 +70,8 @@ class Tune < ActiveRecord::Base
     karma_points.inject(0) {|sum, k| sum + k.karma }
   end
   
-  def add_karma_point(tuner_id, karma_point = 1)
+  def add_karma_point(karma_point = 1, tuner_id = nil)
+    tuner_id ||= self.tuner_id
     # We need to remove the existing karma for a tuner.
     karma_points.delete(karma_points.find(:all, :conditions => ["tuner_id = ?", tuner_id]))
     karma_points << KarmaPoint.new(:tuner_id => tuner_id, :karma => karma_point)
