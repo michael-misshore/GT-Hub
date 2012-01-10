@@ -1,4 +1,7 @@
-<div id="home_sidebar">
+<div id="home_sidebar" class="center">
+	<% if current_tuner.nil? %>
+		<br /><%= link_to 'Register', new_tuner_path, :class => "btn error" %><br />
+	<% end %>
 	<br /><%= link_to 'Create a New Tune', new_tune_path, :class => "btn primary" %><br /><br />
 	<!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 		<input type="hidden" name="cmd" value="_s-xclick">

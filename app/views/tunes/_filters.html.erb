@@ -1,5 +1,8 @@
+<br />
+<%= link_to 'Register', new_tuner_path, :class => "btn error" if current_tuner.nil? %>
 <%= link_to 'Create a Tune', new_tune_path, :class => "btn primary" if @tuner.nil? || @tuner.id == current_tuner.id %>
 <a href="#" class="btn" id="filters_header">Toggle Filters</a>
+<br />
 <div id="tune_filters" style="display: none;">
 	<table>
 		<tr>

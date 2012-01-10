@@ -69,6 +69,10 @@ div#footer {
 	color: white;
 }
 
+div.center {
+	text-align: center;
+}
+
 /* END Layout Styles */
 
 /* CONTENT ITEMS*/

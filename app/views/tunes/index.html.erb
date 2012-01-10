@@ -4,6 +4,7 @@
 		<%= render 'listing' %>
 	<% else %>
 		<h2> Be the first to add a tune!</h2><br />
+		<%= link_to 'Register', new_tuner_path, :class => "btn error" if current_tuner.nil? %>
 		<%= link_to 'Create a New Tune', new_tune_path, :class => "btn primary" %>
 	<% end %>
 <% end %>
