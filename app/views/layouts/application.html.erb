@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GTHub | <%= @title %></title>
+  <title>Gran Turismo Hub | <%= @title %></title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -28,6 +28,7 @@
 				<li><%= link_to 'Account', tuner_path(current_tuner) %></li>
 				<li><%= link_to 'Logout', destroy_tuner_session_path %></li>
 			<% else %>
+				<li><%= link_to 'Register', new_tuner_path %></li>
 				<li><%= link_to 'Login', new_tuner_session_path %></li>
 			<% end %>
 			<li><%= link_to 'Donate', donate_path %></li>

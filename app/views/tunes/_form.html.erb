@@ -45,7 +45,7 @@
 					<td>
 						<div class="field">
 							<b><%= f.label :tune_type, 'Tune Type' %></b>
-							<%= f.select(:tune_type, options_for_select(['Grip', 'Drift', 'Drag'], @tune.tune_type)) %>
+							<%= f.select(:tune_type, options_for_select(['Tarmac', 'Dirt', 'Snow', 'Drift', 'Drag'], @tune.tune_type)) %>
 						</div>
 					</td>
 					<td>
@@ -115,7 +115,7 @@
 					<td colspan="2">
 						<div class="field">
 							<b><%= f.label :track_id %></b>
-							<%= f.collection_select(:track_id, Track.ordered.all, :id, :name) %>
+							<%= f.collection_select(:track_id, Track.ordered.all, :id, :name, :include_blank => 'Not Track Specific') %>
 						</div>
 					</td>
 				</tr>

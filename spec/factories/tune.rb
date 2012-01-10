@@ -5,7 +5,7 @@ Factory.define :tune do |f|
   f.horsepower "1"
   f.torque "1"
   f.performance_points "1"
-  f.tune_type 'Grip'
+  f.tune_type 'Tarmac'
   f.association :car
   f.association :track
   f.association :tuner

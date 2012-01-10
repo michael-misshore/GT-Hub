@@ -16,7 +16,7 @@
 				<td>
 					<div class="field">
 						<b>Track</b><br />
-						<%= @tune.track.name %>
+						<%= (@tune.track) ? @tune.track.name : 'Not Track Specific' %>
 					</div>
 				</td>
 				<td>

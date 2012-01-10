@@ -6,7 +6,7 @@ class Tune < ActiveRecord::Base
   has_and_belongs_to_many :parts
   
   validates_associated :car, :tuner
-  validates_inclusion_of :tune_type, :in => %w(Grip Drift Drag)
+  validates_inclusion_of :tune_type, :in => %w(Tarmac Dirt Snow Drift Drag)
   validates_inclusion_of :transmission_type, :in => %w(Manual Automatic)
   validates_presence_of :horsepower, :torque, :performance_points
   validates_numericality_of :performance_points, :only_integer => true, :allow_blank => true
@@ -83,7 +83,7 @@ class Tune < ActiveRecord::Base
       search_scope = value.present? ? combined_scope.where("#{column.gsub(/^cars\_/, 'cars.')} = ?", value) : combined_scope
     end
 
-    params['order_by'].inject(search_scope.joins(:track)) do |combined_scope, (column, value)|
+    params['order_by'].inject(search_scope.joins('LEFT JOIN tracks ON tracks.id = tunes.track_id')) do |combined_scope, (column, value)|
       if value.empty? 
         combined_scope
       elsif column == 'car'

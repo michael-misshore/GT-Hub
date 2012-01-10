@@ -43,7 +43,7 @@
 				</td>
 				<td><%= tune.tune_type %></td>
 				<td><%= tune.car.display_name %></td>
-				<td><%= tune.track.name %></td>
+				<td><%=  (tune.track) ? tune.track.name : 'Not Track Specific' %></td>
 				<td><%= link_to tune.tuner.tuner_name, tuner_path(tune.tuner) %></td>
 				<td>
 					<% disabled = (current_tuner && current_tuner.id == tune.tuner.id) ? '' : ' disabled'%>

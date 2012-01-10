@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110821170451) do
+ActiveRecord::Schema.define(:version => 20120109230320) do
 
   create_table "cars", :force => true do |t|
     t.datetime "created_at"
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(:version => 20110821170451) do
     t.integer  "car_id"
     t.integer  "tuner_id"
     t.integer  "track_id"
-    t.string   "tune_type",                  :default => "Grip",   :null => false
+    t.string   "tune_type",                  :default => "Tarmac", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "downforce_f"

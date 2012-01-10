@@ -82,6 +82,7 @@ describe TunesController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested tune" do
+        mock_tune.stub(:tuner) { @tuner }
         Tune.stub(:find).with("37") { mock_tune }
         mock_tune.should_receive(:update_attributes).with({'these' => 'params'})
         put :update, :id => "37", :tune => {'these' => 'params'}
@@ -94,7 +95,7 @@ describe TunesController do
       end
 
       it "redirects to the tune" do
-        Tune.stub(:find) { mock_tune(:update_attributes => true) }
+        Tune.stub(:find) { mock_tune(:update_attributes => true, :tuner => @tuner) }
         put :update, :id => "1"
         response.should redirect_to(tune_url(mock_tune))
       end
@@ -108,7 +109,7 @@ describe TunesController do
       end
 
       it "re-renders the 'edit' template" do
-        Tune.stub(:find) { mock_tune(:update_attributes => false) }
+        Tune.stub(:find) { mock_tune(:update_attributes => false, :tuner => @tuner) }
         put :update, :id => "1"
         response.should render_template("edit")
       end
