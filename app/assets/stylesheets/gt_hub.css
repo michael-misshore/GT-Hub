@@ -73,6 +73,10 @@ div.center {
 	text-align: center;
 }
 
+div.field_with_errors {
+	display: inline;
+}
+
 /* END Layout Styles */
 
 /* CONTENT ITEMS*/
