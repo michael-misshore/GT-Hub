@@ -9,6 +9,7 @@ gem 'rails', '3.1.10'
 
 # My Custom Gems
 gem 'mysql2', "= 0.3.7"
+gem 'json', '1.7.7'
 gem 'devise'
 gem 'factory_girl_rails'
 gem 'kaminari'
